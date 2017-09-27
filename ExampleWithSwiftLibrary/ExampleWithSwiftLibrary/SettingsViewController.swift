@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PBRevealViewController
 
 class SettingsViewController: UIViewController, UITextFieldDelegate {
 
@@ -40,46 +39,46 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        leftButton.target = self.revealViewController()
+        leftButton.target = self.revealViewController
         leftButton.action = #selector(PBRevealViewController.revealLeftView)
         
-        rightButton.target = self.revealViewController()
+        rightButton.target = self.revealViewController
         rightButton.action = #selector(PBRevealViewController.revealRightView)
         
-        leftBlurSegmentedControl.selectedSegmentIndex = (revealViewController()?.leftViewBlurEffectStyle.rawValue)! + 1
-        rightBlurSegmentedControl.selectedSegmentIndex = (revealViewController()?.rightViewBlurEffectStyle.rawValue)! + 1
+        leftBlurSegmentedControl.selectedSegmentIndex = (revealViewController?.leftViewBlurEffectStyle.rawValue)! + 1
+        rightBlurSegmentedControl.selectedSegmentIndex = (revealViewController?.rightViewBlurEffectStyle.rawValue)! + 1
         
-        leftPresentOnTopSwitch.isOn = (revealViewController()?.isLeftPresentViewOnTop)!
-        rightPresentOnTopSwitch.isOn = (revealViewController()?.isRightPresentViewOnTop)!
+        leftPresentOnTopSwitch.isOn = (revealViewController?.isLeftPresentViewOnTop)!
+        rightPresentOnTopSwitch.isOn = (revealViewController?.isRightPresentViewOnTop)!
         
-        leftHierarchicallySwitch.isOn = (revealViewController()?.isLeftPresentViewHierarchically)!
-        rightHierarchicallySwitch.isOn = (revealViewController()?.isRightPresentViewHierarchically)!
+        leftHierarchicallySwitch.isOn = (revealViewController?.isLeftPresentViewHierarchically)!
+        rightHierarchicallySwitch.isOn = (revealViewController?.isRightPresentViewHierarchically)!
         
         Bundle.main.loadNibNamed("KeyboardTool", owner: self, options: nil)
         
         leftRevealWidthField.inputAccessoryView = toolBar
-        leftRevealWidthField.text = "\(Int((revealViewController()?.leftViewRevealWidth)!))"
+        leftRevealWidthField.text = "\(Int((revealViewController?.leftViewRevealWidth)!))"
         
         rightRevealWidthField.inputAccessoryView = toolBar
-        rightRevealWidthField.text = "\(Int((revealViewController()?.rightViewRevealWidth)!))"
+        rightRevealWidthField.text = "\(Int((revealViewController?.rightViewRevealWidth)!))"
         
         leftOverdrawField.inputAccessoryView = toolBar
-        leftOverdrawField.text = "\(Int((revealViewController()?.leftViewRevealOverdraw)!))"
+        leftOverdrawField.text = "\(Int((revealViewController?.leftViewRevealOverdraw)!))"
 
         rightOverdrawField.inputAccessoryView = toolBar
-        rightOverdrawField.text = "\(Int((revealViewController()?.rightViewRevealOverdraw)!))"
+        rightOverdrawField.text = "\(Int((revealViewController?.rightViewRevealOverdraw)!))"
 
         leftDisplacementField.inputAccessoryView = toolBar
-        leftDisplacementField.text = "\(Int((revealViewController()?.leftViewRevealDisplacement)!))"
+        leftDisplacementField.text = "\(Int((revealViewController?.leftViewRevealDisplacement)!))"
         
         rightDisplacementField.inputAccessoryView = toolBar
-        rightDisplacementField.text = "\(Int((revealViewController()?.rightViewRevealDisplacement)!))"
+        rightDisplacementField.text = "\(Int((revealViewController?.rightViewRevealDisplacement)!))"
         
         leftPanBoderWidthField.inputAccessoryView = toolBar
-        leftPanBoderWidthField.text = "\(Int((revealViewController()?.panFromLeftBorderWidth)!))"
+        leftPanBoderWidthField.text = "\(Int((revealViewController?.panFromLeftBorderWidth)!))"
 
         rightPanBoderWidthField.inputAccessoryView = toolBar
-        rightPanBoderWidthField.text = "\(Int((revealViewController()?.panFromRightBorderWidth)!))"
+        rightPanBoderWidthField.text = "\(Int((revealViewController?.panFromRightBorderWidth)!))"
 }
 
     override func didReceiveMemoryWarning() {
@@ -90,16 +89,16 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBAction func blurValueChanged(_ sender: UISegmentedControl) {
         switch sender.tag {
         case 100: // Left
-            revealViewController()?.leftViewBlurEffectStyle = styles[sender.selectedSegmentIndex]
-            let nc = revealViewController()?.leftViewController as! UINavigationController
+            revealViewController?.leftViewBlurEffectStyle = styles[sender.selectedSegmentIndex]
+            let nc = revealViewController?.leftViewController as! UINavigationController
             let controller = nc.topViewController as! MenuTableViewController
             if sender.selectedSegmentIndex == 0 {
                 controller.tableView.backgroundColor = UIColor.white
             }
             controller.tableView.reloadData()
         case 200: // Right
-            revealViewController()?.rightViewBlurEffectStyle = styles[sender.selectedSegmentIndex]
-            let nc = revealViewController()?.rightViewController as! UINavigationController
+            revealViewController?.rightViewBlurEffectStyle = styles[sender.selectedSegmentIndex]
+            let nc = revealViewController?.rightViewController as! UINavigationController
             let controller = nc.topViewController as! MenuTableViewController
             if sender.selectedSegmentIndex == 0 {
                 controller.tableView.backgroundColor = UIColor.white
@@ -113,15 +112,15 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBAction func onTopValueChanged(_ sender: UISwitch) {
         switch sender.tag {
         case 100: // Left
-            revealViewController()?.isLeftPresentViewOnTop = sender.isOn
+            revealViewController?.isLeftPresentViewOnTop = sender.isOn
             if !sender.isOn {
-                revealViewController()?.isLeftPresentViewHierarchically = false
+                revealViewController?.isLeftPresentViewHierarchically = false
                 leftHierarchicallySwitch.isOn = false
             }
         case 200: // Right
-            revealViewController()?.isRightPresentViewOnTop = sender.isOn
+            revealViewController?.isRightPresentViewOnTop = sender.isOn
             if !sender.isOn {
-                revealViewController()?.isRightPresentViewHierarchically = false
+                revealViewController?.isRightPresentViewHierarchically = false
                 rightHierarchicallySwitch.isOn = false
             }
         default:
@@ -132,15 +131,15 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBAction func hierarchicallyValueChanged(_ sender: UISwitch) {
         switch sender.tag {
         case 100: // Left
-            revealViewController()?.isLeftPresentViewHierarchically = sender.isOn
+            revealViewController?.isLeftPresentViewHierarchically = sender.isOn
             if sender.isOn {
-                revealViewController()?.isLeftPresentViewOnTop = true
+                revealViewController?.isLeftPresentViewOnTop = true
                 leftPresentOnTopSwitch.isOn = true
             }
         case 200: // Right
-            revealViewController()?.isRightPresentViewHierarchically = sender.isOn
+            revealViewController?.isRightPresentViewHierarchically = sender.isOn
             if sender.isOn {
-                revealViewController()?.isRightPresentViewOnTop = true
+                revealViewController?.isRightPresentViewOnTop = true
                 rightPresentOnTopSwitch.isOn = true
             }
         default:
@@ -164,28 +163,28 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func done(_ sender: UIBarButtonItem) {
         if currentTextField == leftRevealWidthField {
-            revealViewController()?.leftViewRevealWidth = CGFloat(Float(currentTextField!.text!)!)
+            revealViewController?.leftViewRevealWidth = CGFloat(Float(currentTextField!.text!)!)
         }
         if currentTextField == rightRevealWidthField {
-            revealViewController()?.rightViewRevealWidth = CGFloat(Float(currentTextField!.text!)!)
+            revealViewController?.rightViewRevealWidth = CGFloat(Float(currentTextField!.text!)!)
         }
         if currentTextField == leftOverdrawField {
-            revealViewController()?.leftViewRevealOverdraw = CGFloat(Float(currentTextField!.text!)!)
+            revealViewController?.leftViewRevealOverdraw = CGFloat(Float(currentTextField!.text!)!)
         }
         if currentTextField == rightOverdrawField {
-            revealViewController()?.rightViewRevealOverdraw = CGFloat(Float(currentTextField!.text!)!)
+            revealViewController?.rightViewRevealOverdraw = CGFloat(Float(currentTextField!.text!)!)
         }
         if currentTextField == leftDisplacementField {
-            revealViewController()?.leftViewRevealDisplacement = CGFloat(Float(currentTextField!.text!)!)
+            revealViewController?.leftViewRevealDisplacement = CGFloat(Float(currentTextField!.text!)!)
         }
         if currentTextField == rightDisplacementField {
-            revealViewController()?.rightViewRevealDisplacement = CGFloat(Float(currentTextField!.text!)!)
+            revealViewController?.rightViewRevealDisplacement = CGFloat(Float(currentTextField!.text!)!)
         }
         if currentTextField == leftPanBoderWidthField {
-            revealViewController()?.panFromLeftBorderWidth = CGFloat(Float(currentTextField!.text!)!)
+            revealViewController?.panFromLeftBorderWidth = CGFloat(Float(currentTextField!.text!)!)
         }
         if currentTextField == rightPanBoderWidthField {
-            revealViewController()?.panFromRightBorderWidth = CGFloat(Float(currentTextField!.text!)!)
+            revealViewController?.panFromRightBorderWidth = CGFloat(Float(currentTextField!.text!)!)
         }
         currentTextField?.resignFirstResponder()
         

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PBRevealViewController
 
 class MainViewController: UIViewController {
 
@@ -17,10 +16,10 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        leftButton.target = self.revealViewController()
+        leftButton.target = self.revealViewController
         leftButton.action = #selector(PBRevealViewController.revealLeftView)
 
-        rightButton.target = self.revealViewController()
+        rightButton.target = self.revealViewController
         rightButton.action = #selector(PBRevealViewController.revealRightView)
     }
 

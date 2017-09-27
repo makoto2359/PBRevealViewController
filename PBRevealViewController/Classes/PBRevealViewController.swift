@@ -14,7 +14,7 @@ import UIKit.UIGestureRecognizerSubclass
 /**
  Constants for animating when a main view is pushed
  */
-@objc public enum PBRevealToggleAnimationType : Int {
+@objc public enum PBRevealToggleAnimationType: Int {
     /**
      No anmmation
      */
@@ -36,16 +36,16 @@ import UIKit.UIGestureRecognizerSubclass
      
      See also:
      
-        revealController(_ :willAdd:for:animated:)
+     revealController(_ :willAdd:for:animated:)
      
-        revealController(_ :animationBlockFor:from:to:)
+     revealController(_ :animationBlockFor:from:to:)
      
-        revealController(_ :completionBlockFor:from:to:)
+     revealController(_ :completionBlockFor:from:to:)
      
-        revealController(_ :blockFor:from:to:finalBlock:)
+     revealController(_ :blockFor:from:to:finalBlock:)
      
      - Important:
-        If revealController(_ :blockFor:from:to:finalBlock:) is implemented, the others methods are ignored.
+     If revealController(_ :blockFor:from:to:finalBlock:) is implemented, the others methods are ignored.
      */
     case custom
 }
@@ -54,7 +54,7 @@ import UIKit.UIGestureRecognizerSubclass
  Constants for blur effect style to apply to left/right views (since iOS 8).
  */
 
-@objc public enum PBRevealBlurEffectStyle : Int {
+@objc public enum PBRevealBlurEffectStyle: Int {
     /**
      None.
      */
@@ -77,7 +77,7 @@ import UIKit.UIGestureRecognizerSubclass
 /**
  Constants for current operation.
  */
-@objc public enum PBRevealControllerOperation : Int {
+@objc public enum PBRevealControllerOperation: Int {
     /**
      None.
      */
@@ -107,7 +107,7 @@ import UIKit.UIGestureRecognizerSubclass
 /**
  Direction constants when panning.
  */
-@objc public enum PBRevealControllerPanDirection : Int {
+@objc public enum PBRevealControllerPanDirection: Int {
     /**
      Panning to left. Should open right view controller.
      */
@@ -121,7 +121,7 @@ import UIKit.UIGestureRecognizerSubclass
 // MARK: - Delegate functions
 
 /**
-Use a reveal view controller delegate (a custom object that implements this protocol) to modify behavior when a view controller is pushed or replaced. All methods are optionals.
+ Use a reveal view controller delegate (a custom object that implements this protocol) to modify behavior when a view controller is pushed or replaced. All methods are optionals.
  */
 @objc public protocol PBRevealViewControllerDelegate: NSObjectProtocol {
     /**
@@ -129,50 +129,50 @@ Use a reveal view controller delegate (a custom object that implements this prot
      
      See also:
      
-        revealControllerPanGestureShouldBegin(_ :direction:)
-
+     revealControllerPanGestureShouldBegin(_ :direction:)
+     
      - Parameters:
-        - revealController: The reveal view controller object.
-        - viewController:   The left view controller object.
+     - revealController: The reveal view controller object.
+     - viewController:   The left view controller object.
      
      - Returns:
-        true if the left view controller should be shown, false otherwise.
+     true if the left view controller should be shown, false otherwise.
      */
     @objc optional func revealController(_ revealController: PBRevealViewController, shouldShowLeft viewController: UIViewController) -> Bool
-
+    
     /**
      Called just before the left view controller is presented.
-
+     
      - Parameters:
-        - revealController: The reveal view controller object.
-        - viewController:   The left view controller object.
+     - revealController: The reveal view controller object.
+     - viewController:   The left view controller object.
      */
     @objc optional func revealController(_ revealController: PBRevealViewController, willShowLeft viewController: UIViewController)
-
+    
     /**
      Called just after the left view controller is presented.
      
      - Parameters:
-        - revealController: The reveal view controller object.
-        - viewController:   The left view controller object.
+     - revealController: The reveal view controller object.
+     - viewController:   The left view controller object.
      */
-    @objc optional func revealController(_ revealController: PBRevealViewController, didShowLeft viewController:UIViewController)
-
+    @objc optional func revealController(_ revealController: PBRevealViewController, didShowLeft viewController: UIViewController)
+    
     /**
      Called just before the left view controller is hidden.
      
      - Parameters:
-        - revealController: The reveal view controller object.
-        - viewController:   The left view controller object.
+     - revealController: The reveal view controller object.
+     - viewController:   The left view controller object.
      */
     @objc optional func revealController(_ revealController: PBRevealViewController, willHideLeft viewController: UIViewController)
-
+    
     /**
      Called just after the left view controller is hidden.
      
      - Parameters:
-        - revealController: The reveal view controller object.
-        - viewController:   The left view controller object.
+     - revealController: The reveal view controller object.
+     - viewController:   The left view controller object.
      */
     @objc optional func revealController(_ revealController: PBRevealViewController, didHideLeft viewController: UIViewController)
     
@@ -184,128 +184,128 @@ Use a reveal view controller delegate (a custom object that implements this prot
      revealControllerPanGestureShouldBegin(_ :direction:)
      
      - Parameters:
-        - revealController: The reveal view controller object.
-        - viewController:   The right view controller object.
+     - revealController: The reveal view controller object.
+     - viewController:   The right view controller object.
      
      - Returns:
-
-        true if the right view controller should be shown, false otherwise.
+     
+     true if the right view controller should be shown, false otherwise.
      */
     @objc optional func revealController(_ revealController: PBRevealViewController, shouldShowRight viewController: UIViewController) -> Bool
-
+    
     /**
      Called just before the right view controller is presented.
      
      - Parameters:
-        - revealController: The reveal view controller object.
-        - viewController:   The right view controller object.
+     - revealController: The reveal view controller object.
+     - viewController:   The right view controller object.
      */
     @objc optional func revealController(_ revealController: PBRevealViewController, willShowRight viewController: UIViewController)
-
+    
     /**
      Called just after the right view controller is presented.
      
      - Parameters:
-        - revealController: The reveal view controller object.
-        - viewController:   The right view controller object.
+     - revealController: The reveal view controller object.
+     - viewController:   The right view controller object.
      */
     @objc optional func revealController(_ revealController: PBRevealViewController, didShowRight viewController: UIViewController)
-
+    
     /**
      Called just before the right view controller is hidden.
      
      - Parameters:
-        - revealController: The reveal view controller object.
-        - viewController:   The right view controller object.
+     - revealController: The reveal view controller object.
+     - viewController:   The right view controller object.
      */
     @objc optional func revealController(_ revealController: PBRevealViewController, willHideRight viewController: UIViewController)
-
+    
     /**
      Called just after the right view controller is hidden.
      
      - Parameters:
-        - revealController: The reveal view controller object.
-        - viewController:   The right view controller object.
+     - revealController: The reveal view controller object.
+     - viewController:   The right view controller object.
      */
     @objc optional func revealController(_ revealController: PBRevealViewController, didHideRight viewController: UIViewController)
-
+    
     /**
      Implement this to return NO when you want the pan gesture recognizer to be ignored.
      
      See also:
      
-        panGestureRecognizer
+     panGestureRecognizer
      
      - Parameters:
-        - revealController: The reveal view controller object.
-        - direction:        The panning direction.
-
+     - revealController: The reveal view controller object.
+     - direction:        The panning direction.
+     
      - Returns:
-        false if you want the pan gesture recognizer to be ignored, true otherwise.
+     false if you want the pan gesture recognizer to be ignored, true otherwise.
      */
     @objc optional func revealControllerPanGestureShouldBegin(_ revealController: PBRevealViewController, direction: PBRevealControllerPanDirection) -> Bool
-
+    
     /**
      Implement this to return NO when you want the tap gesture recognizer to be ignored.
      
      See also:
      
-        tapGestureRecognizer
+     tapGestureRecognizer
      
      - Parameters:
-        - revealController: The reveal view controller object.
-
+     - revealController: The reveal view controller object.
+     
      - Returns:
-        false if you want the tap gesture recognizer to be ignored, true otherwise.
+     false if you want the tap gesture recognizer to be ignored, true otherwise.
      */
     @objc optional func revealControllerTapGestureShouldBegin(_ revealController: PBRevealViewController) -> Bool
-
+    
     /**
      Implement this to return true if you want other gesture recognizer to share touch events with the pan gesture.
      
      See also:
      
-        panGestureRecognizer
+     panGestureRecognizer
      
      - Parameters:
-        - revealController:       The reveal view controller object.
-        - otherGestureRecognizer: The other gesture recognizer.
-        - direction:              The panning direction.
+     - revealController:       The reveal view controller object.
+     - otherGestureRecognizer: The other gesture recognizer.
+     - direction:              The panning direction.
      
      - Returns:
-        true if you want other gesture recognizer to share touch events with the pan gesture.
+     true if you want other gesture recognizer to share touch events with the pan gesture.
      */
     @objc optional func revealController(_ revealController: PBRevealViewController, panGestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer, direction: PBRevealControllerPanDirection) -> Bool
-
+    
     /**
      Implement this to return true if you want other gesture recognizer to share touch events with the tap gesture.
      
      See also:
      
-        tapGestureRecognizer
+     tapGestureRecognizer
      
      - Parameters:
-        - revealController:       The reveal view controller object.
-        - otherGestureRecognizer: The other gesture recognizer.
-
+     - revealController:       The reveal view controller object.
+     - otherGestureRecognizer: The other gesture recognizer.
+     
      - Returns:
-        true if you want other gesture recognizer to share touch events with the tap gesture.
+     true if you want other gesture recognizer to share touch events with the tap gesture.
      */
     @objc optional func revealController(_ revealController: PBRevealViewController, tapGestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool
-
+    
     /**
      Called when the gestureRecognizer began.
      
      See also:
      
      panGestureRecognizer
-
+     
      - Parameters:
-        - revealController: The reveal view controller object.
-        - direction:        The panning direction.
+     - revealController: The reveal view controller object.
+     - direction:        The panning direction.
      */
     @objc optional func revealControllerPanGestureBegan(_ revealController: PBRevealViewController, direction: PBRevealControllerPanDirection)
-
+    
     /**
      Called when the gestureRecognizer moved.
      
@@ -314,11 +314,11 @@ Use a reveal view controller delegate (a custom object that implements this prot
      panGestureRecognizer
      
      - Parameters:
-        - revealController: The reveal view controller object.
-        - direction:        The panning direction.
+     - revealController: The reveal view controller object.
+     - direction:        The panning direction.
      */
     @objc optional func revealControllerPanGestureMoved(_ revealController: PBRevealViewController, direction: PBRevealControllerPanDirection)
-
+    
     /**
      Called when the gestureRecognizer ended.
      
@@ -327,11 +327,11 @@ Use a reveal view controller delegate (a custom object that implements this prot
      panGestureRecognizer
      
      - Parameters:
-        - revealController: The reveal view controller object.
-        - direction:        The panning direction.
+     - revealController: The reveal view controller object.
+     - direction:        The panning direction.
      */
     @objc optional func revealControllerPanGestureEnded(_ revealController: PBRevealViewController, direction: PBRevealControllerPanDirection)
-
+    
     /**
      Called just before child controller replacement (left, main or right).
      
@@ -340,13 +340,13 @@ Use a reveal view controller delegate (a custom object that implements this prot
      revealController(_ :didAdd:for:animated:)
      
      - Parameters:
-        - revealController: The reveal view controller object.
-        - viewController:   The child view controller.
-        - operation:        The current operation.
-        - animated:         true if the replacement is animated, false otherwise.
+     - revealController: The reveal view controller object.
+     - viewController:   The child view controller.
+     - operation:        The current operation.
+     - animated:         true if the replacement is animated, false otherwise.
      */
     @objc optional func revealController(_ revealController: PBRevealViewController, willAdd viewController: UIViewController, for operation: PBRevealControllerOperation, animated: Bool)
-
+    
     /**
      Called just after child controller replacement (left, main or right).
      
@@ -355,13 +355,13 @@ Use a reveal view controller delegate (a custom object that implements this prot
      revealController(_ :willAdd:for:animated:)
      
      - Parameters:
-        - revealController: The reveal view controller object.
-        - viewController:   The child view controller.
-        - operation:        The current operation.
-        - animated:         true if the replacement is animated, false otherwise.
+     - revealController: The reveal view controller object.
+     - viewController:   The child view controller.
+     - operation:        The current operation.
+     - animated:         true if the replacement is animated, false otherwise.
      */
     @objc optional func revealController(_ revealController: PBRevealViewController, didAdd viewController: UIViewController, for operation: PBRevealControllerOperation, animated: Bool)
-
+    
     /**
      Ask for animation block while pushing main view controller.
      
@@ -370,16 +370,16 @@ Use a reveal view controller delegate (a custom object that implements this prot
      revealController(_ :blockFor:from:to:finalBlock:)
      
      - Parameters:
-        - revealController:   The reveal view controller object.
-        - operation:          The current operation (push from left or push from right).
-        - fromViewController: The main view controller.
-        - toViewController:   The new main view controller. When called the toViewController's view is behind the fromViewController's view.
-
+     - revealController:   The reveal view controller object.
+     - operation:          The current operation (push from left or push from right).
+     - fromViewController: The main view controller.
+     - toViewController:   The new main view controller. When called the toViewController's view is behind the fromViewController's view.
+     
      - Returns:
-        A block to be inserted in the view animation.
+     A block to be inserted in the view animation.
      */
-    @objc optional func revealController(_ revealController: PBRevealViewController, animationBlockFor operation: PBRevealControllerOperation, from fromViewController: UIViewController, to toViewController: UIViewController) -> ((_: Void) -> Void)?
-
+    @objc optional func revealController(_ revealController: PBRevealViewController, animationBlockFor operation: PBRevealControllerOperation, from fromViewController: UIViewController, to toViewController: UIViewController) -> (() -> Void)?
+    
     /**
      Ask for completion block while pushing main view controller.
      
@@ -388,16 +388,16 @@ Use a reveal view controller delegate (a custom object that implements this prot
      revealController(_ :blockFor:from:to:finalBlock:)
      
      - Parameters:
-        - revealController:   The reveal view controller object.
-        - operation:          The current operation (push from left or push from right).
-        - fromViewController: The main view controller.
-        - toViewController:   The new main view controller. When called the toViewController's view is behind the fromViewController's view.
-
+     - revealController:   The reveal view controller object.
+     - operation:          The current operation (push from left or push from right).
+     - fromViewController: The main view controller.
+     - toViewController:   The new main view controller. When called the toViewController's view is behind the fromViewController's view.
+     
      - Returns:
-        A block to be inserted in the view animation completion.
+     A block to be inserted in the view animation completion.
      */
-    @objc optional func revealController(_ revealController: PBRevealViewController, completionBlockFor operation: PBRevealControllerOperation, from fromViewController: UIViewController, to toViewController: UIViewController) -> ((_: Void) -> Void)?
-
+    @objc optional func revealController(_ revealController: PBRevealViewController, completionBlockFor operation: PBRevealControllerOperation, from fromViewController: UIViewController, to toViewController: UIViewController) -> (() -> Void)?
+    
     /**
      Ask for a block with animation and completion while replacing/pushing child view controllers, please add the final block to your completion.
      
@@ -410,28 +410,28 @@ Use a reveal view controller delegate (a custom object that implements this prot
      revealController(_ :animationControllerForTransitionFrom:to:for:)
      
      - Parameters:
-        - revealController:   The reveal view controller object.
-        - operation:          The current operation (push from left or push from right).
-        - fromViewController: The main view controller.
-        - toViewController:   The new main view controller. When called the toViewController's view is behind the fromViewController's view.
-        - finalBlock:         The final block provided by the reveal view controller object. This block must be inserted in your completion block.
-
+     - revealController:   The reveal view controller object.
+     - operation:          The current operation (push from left or push from right).
+     - fromViewController: The main view controller.
+     - toViewController:   The new main view controller. When called the toViewController's view is behind the fromViewController's view.
+     - finalBlock:         The final block provided by the reveal view controller object. This block must be inserted in your completion block.
+     
      - Returns:
-        A block with animation and completion (add the final block to your completion).
+     A block with animation and completion (add the final block to your completion).
      */
-    @objc optional func revealController(_ revealController: PBRevealViewController, blockFor operation: PBRevealControllerOperation, from fromViewController: UIViewController, to toViewController: UIViewController, finalBlock: @escaping (_: Void) -> Void) -> ((_: Void) -> Void)?
-
+    @objc optional func revealController(_ revealController: PBRevealViewController, blockFor operation: PBRevealControllerOperation, from fromViewController: UIViewController, to toViewController: UIViewController, finalBlock: @escaping () -> Void) -> (() -> Void)?
+    
     /**
      Ask for custom transition animations controller while replacing/pushing child view controllers. If implemented, it will be fired in response to calls setXXXViewController or pushXXXViewController child view controller (since iOS 7).
      
      - Parameters:
-        - revealController:   The reveal view controller object.
-        - fromViewController: The child view controller to replace.
-        - toViewController:   The new child view controller.
-        - operation:          The current operation (push from left, push from right, or replace).
-
+     - revealController:   The reveal view controller object.
+     - fromViewController: The child view controller to replace.
+     - toViewController:   The new child view controller.
+     - operation:          The current operation (push from left, push from right, or replace).
+     
      - Returns:
-        The animator object adopting the UIViewControllerAnimatedTransitioning protocol.
+     The animator object adopting the UIViewControllerAnimatedTransitioning protocol.
      */
     @objc optional func revealController(_ revealController: PBRevealViewController, animationControllerForTransitionFrom fromViewController: UIViewController, to toViewController: UIViewController, for operation: PBRevealControllerOperation) -> UIViewControllerAnimatedTransitioning?
 }
@@ -444,9 +444,9 @@ Use a reveal view controller delegate (a custom object that implements this prot
  String identifiers to be applied to PBRevealViewControllerSegueSetController segues on a storyboard.
  */
 
-let PBSegueLeftIdentifier: String   = "pb_left"
-let PBSegueMainIdentifier: String   = "pb_main"
-let PBSegueRightIdentifier: String  = "pb_right"
+let PBSegueLeftIdentifier = "pb_left"
+let PBSegueMainIdentifier = "pb_main"
+let PBSegueRightIdentifier = "pb_right"
 
 /**
  Use this to segue to the initial state. View controller segues are "pb_left", "pb_main" and "pb_right".
@@ -454,36 +454,33 @@ let PBSegueRightIdentifier: String  = "pb_right"
 @objc(PBRevealViewControllerSegueSetController)
 open class PBRevealViewControllerSegueSetController: UIStoryboardSegue {
     override open func perform() {
-        let identifier: String = self.identifier!
-        let rvc: PBRevealViewController? = source as? PBRevealViewController
-        let dvc: UIViewController? = destination
-        if (identifier == PBSegueMainIdentifier) {
-            rvc?.addChildViewController(dvc!)
-            dvc?.didMove(toParentViewController: rvc)
-            rvc?.mainViewController = dvc
+        guard let identifier = identifier else { return }
+        if let rvc = source as? PBRevealViewController {
+            if identifier == PBSegueMainIdentifier {
+                rvc.addChildViewController(destination)
+                destination.didMove(toParentViewController: rvc)
+                rvc.mainViewController = destination
+            } else if identifier == PBSegueLeftIdentifier {
+                rvc.addChildViewController(destination)
+                destination.didMove(toParentViewController: rvc)
+                rvc.leftViewController = destination
+            } else if identifier == PBSegueRightIdentifier {
+                rvc.addChildViewController(destination)
+                destination.didMove(toParentViewController: rvc)
+                rvc.rightViewController = destination
+            }
         }
-        else if (identifier == PBSegueLeftIdentifier) {
-            rvc?.addChildViewController(dvc!)
-            dvc?.didMove(toParentViewController: rvc)
-            rvc?.leftViewController = dvc
-        }
-        else if (identifier == PBSegueRightIdentifier) {
-            rvc?.addChildViewController(dvc!)
-            dvc?.didMove(toParentViewController: rvc)
-            rvc?.rightViewController = dvc
-        }
-        
         #if os(iOS)
             if (floor(NSFoundationVersionNumber) < 7.0) {
-                var frame: CGRect? = dvc?.view?.frame
-                frame?.origin.y = 0
-                if (dvc is UINavigationController) {
+                var frame = destination.view.frame
+                frame.origin.y = 0
+                if (destination is UINavigationController) {
                     let statusBarIsHidden: Bool = (UIApplication.shared.statusBarFrame.size.height == 0.0)
                     if !statusBarIsHidden {
-                        frame?.size.height -= UIApplication.shared.statusBarFrame.size.height
+                        frame.size.height -= UIApplication.shared.statusBarFrame.size.height
                     }
                 }
-                dvc?.view?.frame = frame!
+                destination.view.frame = frame
             }
         #endif
     }
@@ -497,9 +494,7 @@ open class PBRevealViewControllerSegueSetController: UIStoryboardSegue {
 @objc(PBRevealViewControllerSeguePushController)
 open class PBRevealViewControllerSeguePushController: UIStoryboardSegue {
     override open func perform() {
-        let rvc: PBRevealViewController? = source.revealViewController()
-        let dvc: UIViewController? = destination
-        rvc?.pushMainViewController(dvc!, animated: true)
+        source.revealViewController?.pushMainViewController(destination, animated: true)
     }
 }
 
@@ -507,13 +502,13 @@ open class PBRevealViewControllerSeguePushController: UIStoryboardSegue {
 
 @objc(PBRevealViewController)
 open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate {
-
+    
     /**
      Defines the radius of the main view's shadow, default is 2.5f.
      */
     open var mainViewShadowRadius: CGFloat = 2.5 {
         didSet {
-            _reloadMainShadow()
+            reloadMainShadow()
         }
     }
     
@@ -522,7 +517,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var mainViewShadowOffset = CGSize(width: 0.0, height: 2.5) {
         didSet {
-            _reloadMainShadow()
+            reloadMainShadow()
         }
     }
     
@@ -531,7 +526,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var mainViewShadowOpacity: Float = 1.0 {
         didSet {
-            _reloadMainShadow()
+            reloadMainShadow()
         }
     }
     
@@ -540,7 +535,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var mainViewShadowColor: UIColor = UIColor.black {
         didSet {
-            _reloadMainShadow()
+            reloadMainShadow()
         }
     }
     
@@ -549,14 +544,14 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var isLeftPresentViewHierarchically: Bool = false {
         didSet {
-            if self.leftViewController != nil {
-                var frame: CGRect = self.leftViewController!.view.frame
+            if let leftViewController = leftViewController {
+                var frame = leftViewController.view.frame
                 frame.origin.y = 0
-                frame.size.height = self.view.bounds.size.height
-                self.leftViewController?.view.frame = frame
+                frame.size.height = view.bounds.size.height
+                leftViewController.view.frame = frame
                 if isLeftPresentViewHierarchically {
-                    let frame: CGRect = adjustsFrameForController(self.leftViewController!)
-                    self.leftViewController?.view.frame = frame
+                    let frame = adjustsFrameForController(leftViewController)
+                    leftViewController.view.frame = frame
                 }
             }
         }
@@ -580,15 +575,15 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
             if leftViewRevealWidth > UIScreen.main.bounds.size.width {
                 leftViewRevealWidth = UIScreen.main.bounds.size.width
             }
-            if self.isLeftViewOpen {
-                var frame: CGRect = self.leftViewController!.view.frame
+            if let leftViewController = leftViewController, isLeftViewOpen {
+                var frame = leftViewController.view.frame
                 frame.origin.x = 0.0
                 frame.size.width = leftViewRevealWidth
-                self.leftViewController?.view.frame = frame
-                if !self.isLeftPresentViewOnTop {
-                    frame = (self.mainViewController?.view.frame)!
+                leftViewController.view.frame = frame
+                if let mainViewController = mainViewController, !isLeftPresentViewOnTop {
+                    frame = mainViewController.view.frame
                     frame.origin.x = leftViewRevealWidth
-                    self.mainViewController?.view.frame = frame
+                    mainViewController.view.frame = frame
                 }
             }
         }
@@ -600,13 +595,13 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
     open var leftToggleAnimationDuration: TimeInterval = 0.5
     
     /**
-     The damping ratio for the spring animation, default is 0.8.
+     The damping ratio for the spring animation, default is 1.
      */
-    open var leftToggleSpringDampingRatio: CGFloat = 0.8
+    open var leftToggleSpringDampingRatio: CGFloat = 1
     
     /**
      The initial spring velocity, default is 0.5.
-    */
+     */
     open var leftToggleSpringVelocity: CGFloat = 0.5
     
     /**
@@ -614,7 +609,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var leftViewShadowRadius: CGFloat = 2.5 {
         didSet {
-            _reloadLeftShadow()
+            reloadLeftShadow()
         }
     }
     
@@ -623,7 +618,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var leftViewShadowOffset: CGSize = CGSize(width: 0.0, height: 2.5) {
         didSet {
-            _reloadLeftShadow()
+            reloadLeftShadow()
         }
     }
     
@@ -632,7 +627,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var leftViewShadowOpacity: CGFloat = 1.0 {
         didSet {
-            _reloadLeftShadow()
+            reloadLeftShadow()
         }
     }
     
@@ -641,7 +636,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var leftViewShadowColor: UIColor = UIColor.black {
         didSet {
-            _reloadLeftShadow()
+            reloadLeftShadow()
         }
     }
     
@@ -651,7 +646,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
     open var leftViewBlurEffectStyle = PBRevealBlurEffectStyle.none {
         didSet {
             if leftViewBlurEffectStyle != oldValue {
-                _reloadSideBlurEffectStyle(style: leftViewBlurEffectStyle.rawValue, forController: self.leftViewController, forOperation: .replaceLeftController)
+                reloadSideBlurEffectStyle(style: leftViewBlurEffectStyle.rawValue, forController: leftViewController, forOperation: .replaceLeftController)
             }
         }
     }
@@ -661,14 +656,14 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var isRightPresentViewHierarchically: Bool = false {
         didSet {
-            if self.rightViewController != nil {
-                var frame: CGRect = self.rightViewController!.view.frame
+            if let rightViewController = rightViewController {
+                var frame = rightViewController.view.frame
                 frame.origin.y = 0
-                frame.size.height = self.view.bounds.size.height
-                self.rightViewController?.view.frame = frame
+                frame.size.height = view.bounds.size.height
+                rightViewController.view.frame = frame
                 if isRightPresentViewHierarchically {
-                    let frame: CGRect = adjustsFrameForController(self.rightViewController!)
-                    self.rightViewController?.view.frame = frame
+                    let frame = adjustsFrameForController(rightViewController)
+                    rightViewController.view.frame = frame
                 }
             }
         }
@@ -692,15 +687,15 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
             if rightViewRevealWidth > UIScreen.main.bounds.size.width {
                 rightViewRevealWidth = UIScreen.main.bounds.size.width
             }
-            if self.isRightViewOpen {
-                var frame: CGRect = self.rightViewController!.view.frame
-                frame.origin.x = self.view.bounds.size.width - rightViewRevealWidth
+            if let rightViewController = rightViewController, isRightViewOpen {
+                var frame = rightViewController.view.frame
+                frame.origin.x = view.bounds.size.width - rightViewRevealWidth
                 frame.size.width = rightViewRevealWidth
-                self.rightViewController?.view.frame = frame
-                if !self.isRightPresentViewOnTop {
-                    frame = (self.mainViewController?.view.frame)!
+                rightViewController.view.frame = frame
+                if let mainViewController = mainViewController, !isRightPresentViewOnTop {
+                    frame = mainViewController.view.frame
                     frame.origin.x = -(rightViewRevealWidth)
-                    self.mainViewController?.view.frame = frame
+                    mainViewController.view.frame = frame
                 }
             }
         }
@@ -712,9 +707,9 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
     open var rightToggleAnimationDuration: TimeInterval = 0.5
     
     /**
-     The damping ratio for the spring animation, default is 0.8f.
+     The damping ratio for the spring animation, default is 1f.
      */
-    open var rightToggleSpringDampingRatio: CGFloat = 0.8
+    open var rightToggleSpringDampingRatio: CGFloat = 1
     
     /**
      The initial spring velocity, default is 0.5f.
@@ -726,7 +721,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var rightViewShadowRadius: CGFloat = 2.5 {
         didSet {
-            _reloadRightShadow()
+            reloadRightShadow()
         }
     }
     
@@ -735,7 +730,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var rightViewShadowOffset: CGSize = CGSize(width: 0.0, height: 2.5) {
         didSet {
-            _reloadRightShadow()
+            reloadRightShadow()
         }
     }
     
@@ -744,7 +739,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var rightViewShadowOpacity: CGFloat = 1.0 {
         didSet {
-            _reloadRightShadow()
+            reloadRightShadow()
         }
     }
     
@@ -753,7 +748,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var rightViewShadowColor: UIColor = UIColor.black {
         didSet {
-            _reloadRightShadow()
+            reloadRightShadow()
         }
     }
     
@@ -763,7 +758,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
     open var rightViewBlurEffectStyle = PBRevealBlurEffectStyle.none {
         didSet {
             if rightViewBlurEffectStyle != oldValue {
-                _reloadSideBlurEffectStyle(style: rightViewBlurEffectStyle.rawValue, forController: self.rightViewController, forOperation: .replaceRightController)
+                reloadSideBlurEffectStyle(style: rightViewBlurEffectStyle.rawValue, forController: rightViewController, forOperation: .replaceRightController)
             }
         }
     }
@@ -813,7 +808,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open private(set) var isRightViewDragging: Bool = false
     
-#if os(tvOS)
+    #if os(tvOS)
     /**
      An optional invisible focusable button for revealing left view, default is nil, call [self tvOSLeftRevealButton] once to add it to the reveal view controller's view.
      */
@@ -858,7 +853,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      If isPressTypePlayPauseAllowed is set to true (default is false), hide left view if opened, show/hide right view when Apple TV PlayPause button is pressed.
      */
     open var isPressTypePlayPauseAllowed: Bool = false
-#endif
+    #endif
     
     /**
      The default tap gesture recognizer added to the main view. Default behavior will hide the left or right view.
@@ -885,8 +880,8 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var leftViewController: UIViewController? {
         didSet {
-            if leftViewController != oldValue {
-                _setLeftViewController(leftViewController: leftViewController!)
+            if let leftViewController = leftViewController, leftViewController != oldValue {
+                setLeftViewController(leftViewController)
             }
         }
     }
@@ -896,8 +891,8 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var mainViewController: UIViewController? {
         didSet {
-            if mainViewController != oldValue {
-                _setMainViewController(mainViewController: mainViewController!)
+            if let mainViewController = mainViewController, mainViewController != oldValue {
+                setMainViewController(mainViewController)
             }
         }
     }
@@ -907,8 +902,8 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      */
     open var rightViewController: UIViewController? {
         didSet {
-            if rightViewController != oldValue {
-                _setRightViewController(rightViewController: rightViewController!)
+            if let rightViewController = rightViewController, rightViewController != oldValue {
+                setRightViewController(rightViewController)
             }
         }
     }
@@ -917,7 +912,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      The delegate of the PBRevealViewController object.
      */
     weak open var delegate: PBRevealViewControllerDelegate?
-
+    
     // MARK: - PBRevealViewController class - Private
     
     private var contentView: UIView?
@@ -930,9 +925,9 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
     private var rightEffectView: UIVisualEffectView?
     private var rightShadowView: UIView?
     private var rightShadowOpacity: CGFloat = 0.0
-
+    
     // MARK: - Init
-
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -941,27 +936,27 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
      Instantiate a PBRevealViewController class programmatically
      
      - Parameters:
-        - leftViewController:  A subclass of UIViewController (optional).
-        - mainViewController:  A subclass of UIViewController (required).
-        - rightViewController: A subclass of UIViewController (optional).
-
+     - leftViewController:  A subclass of UIViewController (optional).
+     - mainViewController:  A subclass of UIViewController (required).
+     - rightViewController: A subclass of UIViewController (optional).
+     
      - Returns:
-        PBRevealViewController instance.
+     PBRevealViewController instance.
      */
-    @objc public init(leftViewController: UIViewController?, mainViewController: UIViewController, rightViewController: UIViewController?) {
+    @objc public init(leftViewController: UIViewController?, mainViewController: UIViewController, rightViewController: UIViewController? = nil) {
         super.init(nibName: nil, bundle: nil)
         
         addChildViewController(mainViewController)
         mainViewController.didMove(toParentViewController: self)
         self.mainViewController = mainViewController
-        if (leftViewController != nil) {
-            addChildViewController(leftViewController!)
-            leftViewController!.didMove(toParentViewController: self)
+        if let leftViewController = leftViewController {
+            addChildViewController(leftViewController)
+            leftViewController.didMove(toParentViewController: self)
         }
         self.leftViewController = leftViewController
-        if rightViewController != nil {
-            addChildViewController(rightViewController!)
-            rightViewController!.didMove(toParentViewController: self)
+        if let rightViewController = rightViewController {
+            addChildViewController(rightViewController)
+            rightViewController.didMove(toParentViewController: self)
         }
         self.rightViewController = rightViewController
         
@@ -970,40 +965,40 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
                 let statusBarIsHidden: Bool = (UIApplication.shared.statusBarFrame.size.height == 0.0)
                 var frame: CGRect = mainViewController.view.frame
                 frame.origin.y = 0
-                if (mainViewController is UINavigationController) {
+                if mainViewController is UINavigationController {
                     if !statusBarIsHidden {
                         frame.size.height -= UIApplication.shared.statusBarFrame.size.height
                     }
                 }
                 mainViewController.view.frame = frame
-                if (leftViewController != nil) {
-                    frame = (leftViewController?.view.frame)!
+                if let leftViewController = leftViewController {
+                    frame = leftViewController.view.frame
                     frame.origin.y = 0
-                    if (leftViewController is UINavigationController) {
+                    if leftViewController is UINavigationController {
                         if !statusBarIsHidden {
                             frame.size.height -= UIApplication.shared.statusBarFrame.size.height
                         }
                     }
-                    leftViewController?.view.frame = frame
+                    leftViewController.view.frame = frame
                 }
-                if (rightViewController != nil) {
-                    frame = (rightViewController?.view.frame)!
+                if let rightViewController = rightViewController {
+                    frame = rightViewController.view.frame
                     frame.origin.y = 0
                     if (rightViewController is UINavigationController) {
                         if !statusBarIsHidden {
                             frame.size.height -= UIApplication.shared.statusBarFrame.size.height
                         }
                     }
-                    rightViewController?.view.frame = frame
+                    rightViewController.view.frame = frame
                 }
             }
         #endif
         
-        _reloadLeftShadow()
-        _reloadRightShadow()
-        _reloadMainShadow()
+        reloadLeftShadow()
+        reloadRightShadow()
+        reloadMainShadow()
     }
-
+    
     // MARK: - View lifecycle
     
     override open func loadView() {
@@ -1011,17 +1006,17 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
         var frame: CGRect = UIScreen.main.bounds
         #if os(iOS)
             if (floor(NSFoundationVersionNumber) < 7.0) {
-                let statusBarIsHidden: Bool = (UIApplication.shared.statusBarFrame.size.height == 0.0)
+                let statusBarIsHidden = (UIApplication.shared.statusBarFrame.size.height == 0.0)
                 if !statusBarIsHidden {
                     frame.size.height -= UIApplication.shared.statusBarFrame.size.height
                 }
             }
         #endif
-        self.contentView = PBRevealView(frame: frame, controller: self)
-        self.contentView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.view = self.contentView
+        contentView = PBRevealView(frame: frame, controller: self)
+        contentView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view = contentView
         loadStoryboardControllers()
-        self.contentView?.addSubview((self.mainViewController?.view)!)
+        contentView?.addSubview((mainViewController?.view)!)
         #if os(iOS)
             _ = _tapGestureRecognizer()
             _ = _panGestureRecognizer()
@@ -1030,561 +1025,491 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
     
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.isUserInteractionStore = (self.contentView?.isUserInteractionEnabled)!
+        isUserInteractionStore = (contentView?.isUserInteractionEnabled)!
     }
-    
-    /*
-    private func initDefaultProperties() {
-        navigationBar = UINavigationBar()
-        leftEffectView = nil
-        leftShadowView = nil
-        leftShadowOpacity = 0.0
-        rightEffectView = nil
-        rightShadowView = nil
-        rightShadowOpacity = 0.0
-        mainViewShadowRadius = 2.5
-        mainViewShadowOffset = CGSize(width: CGFloat(0.0), height: CGFloat(2.5))
-        mainViewShadowOpacity = 1.0
-        mainViewShadowColor = UIColor.black
-        isLeftPresentViewHierarchically = false
-        isLeftPresentViewOnTop = true
-        leftViewRevealDisplacement = 40.0
-        leftViewRevealWidth = 260.0
-        leftToggleAnimationDuration = 0.5
-        leftToggleSpringDampingRatio = 0.8
-        leftToggleSpringVelocity = 0.5
-        leftViewShadowRadius = 2.5
-        leftViewShadowOffset = CGSize(width: CGFloat(0.0), height: CGFloat(2.5))
-        leftViewShadowOpacity = 1.0
-        leftViewShadowColor = UIColor.black
-        leftViewBlurEffectStyle = PBRevealBlurEffectStyle.none
-        isRightPresentViewHierarchically = false
-        isRightPresentViewOnTop = true
-        rightViewRevealDisplacement = 40.0
-        rightViewRevealWidth = 160.0
-        rightToggleAnimationDuration = 0.5
-        rightToggleSpringDampingRatio = 0.8
-        rightToggleSpringVelocity = 0.5
-        rightViewShadowRadius = 2.5
-        rightViewShadowOffset = CGSize(width: CGFloat(0.0), height: CGFloat(2.5))
-        rightViewShadowOpacity = 1.0
-        rightViewShadowColor = UIColor.black
-        rightViewBlurEffectStyle = PBRevealBlurEffectStyle.none
-        replaceViewAnimationDuration = 0.25
-        swipeVelocity = 250.0
-        toggleAnimationType = PBRevealToggleAnimationType.none
-        leftViewRevealOverdraw = 60.0
-        rightViewRevealOverdraw = 60.0
-        isLeftViewOpen = false
-        isLeftViewDragging = false
-        isRightViewOpen = false
-        isRightViewDragging = false
-        isUserInteractionStore = true
-        #if os(tvOS)
-            isPressTypeMenuAllowed = false
-            isPressTypePlayPauseAllowed = false
-        #endif
-    }
-    */
     
     // Load any defined Main/Left/Right controllers from the storyboard
     private func loadStoryboardControllers() {
         
-        if (self.storyboard != nil) && leftViewController == nil {
+        if let _ = storyboard, leftViewController == nil {
             
             //Try each segue separately so it doesn't break prematurely if either Rear or Right views are not used.
-            self.performSegue(id: PBSegueLeftIdentifier, sender: nil)
-            self.performSegue(id: PBSegueMainIdentifier, sender: nil)
-            self.performSegue(id: PBSegueRightIdentifier, sender: nil)
+            performSegue(id: PBSegueLeftIdentifier, sender: nil)
+            performSegue(id: PBSegueMainIdentifier, sender: nil)
+            performSegue(id: PBSegueRightIdentifier, sender: nil)
         }
     }
     
     // MARK: - Public methods
-
+    
     /**
      Defines the width of the left view when it is shown.
-
+     
      - Parameters:
-        - leftViewRevealWidth: The left view width.
-        - animated:            Specify true to animate the new width or false if you do not want it to be animated.
+     - leftViewRevealWidth: The left view width.
+     - animated:            Specify true to animate the new width or false if you do not want it to be animated.
      */
     @objc open func setLeftViewRevealWidth(_ leftViewRevealWidth: CGFloat, animated: Bool) {
         let duration: TimeInterval = animated ? leftToggleAnimationDuration : 0.0
         if (floor(NSFoundationVersionNumber) >= NSFoundationVersionNumber_iOS_7_0) {
-            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: leftToggleSpringDampingRatio, initialSpringVelocity: leftToggleSpringVelocity, options: .layoutSubviews, animations: {() -> Void in
+            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: leftToggleSpringDampingRatio, initialSpringVelocity: leftToggleSpringVelocity, options: .layoutSubviews, animations: { () -> Void in
                 self.leftViewRevealWidth = leftViewRevealWidth
-            }, completion: {(_ finished: Bool) -> Void in
+            }, completion: { (_ finished: Bool) -> Void in
             })
-        }
-        else {
-            UIView.animate(withDuration: duration, animations: {() -> Void in
+        } else {
+            UIView.animate(withDuration: duration, animations: { () -> Void in
                 self.leftViewRevealWidth = leftViewRevealWidth
             })
         }
     }
-
+    
     /**
      Defines the width of the right view.
-
+     
      - Parameters:
-        - rightViewRevealWidth: The right view width.
-        - animated:             Specify true to animate the new width or false if you do not want it to be animated.
+     - rightViewRevealWidth: The right view width.
+     - animated:             Specify true to animate the new width or false if you do not want it to be animated.
      */
     @objc open func setRightViewRevealWidth(_ rightViewRevealWidth: CGFloat, animated: Bool) {
         let duration: TimeInterval = animated ? rightToggleAnimationDuration : 0.0
         if (floor(NSFoundationVersionNumber) >= NSFoundationVersionNumber_iOS_7_0) {
-            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: rightToggleSpringDampingRatio, initialSpringVelocity: rightToggleSpringVelocity, options: .layoutSubviews, animations: {() -> Void in
+            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: rightToggleSpringDampingRatio, initialSpringVelocity: rightToggleSpringVelocity, options: .layoutSubviews, animations: { () -> Void in
                 self.rightViewRevealWidth = rightViewRevealWidth
-            }, completion: {(_ finished: Bool) -> Void in
+            }, completion: { (_ finished: Bool) -> Void in
             })
-        }
-        else {
-            UIView.animate(withDuration: duration, animations: {() -> Void in
+        } else {
+            UIView.animate(withDuration: duration, animations: { () -> Void in
                 self.rightViewRevealWidth = rightViewRevealWidth
             })
         }
     }
-
+    
     /**
      Replace the left view controller.
-
+     
      - Parameters:
-        - leftViewController: A subclass of UIViewController.
-        - animated:           Specify true to animate the replacement or false if you do not want the replacement to be animated.
+     - leftViewController: A subclass of UIViewController.
+     - animated:           Specify true to animate the replacement or false if you do not want the replacement to be animated.
      */
     @objc open func setLeftViewController(_ leftViewController: UIViewController, animated: Bool) {
         if isLeftPresentViewHierarchically {
-            let frame: CGRect = adjustsFrameForController(leftViewController)
+            let frame = adjustsFrameForController(leftViewController)
             leftViewController.view.frame = frame
         }
-        _reloadSideBlurEffectStyle(style: self.leftViewBlurEffectStyle.rawValue, forController: leftViewController, forOperation: .replaceLeftController)
+        reloadSideBlurEffectStyle(style: leftViewBlurEffectStyle.rawValue, forController: leftViewController, forOperation: .replaceLeftController)
         if isLeftViewOpen {
-            _swapFromViewController(self.leftViewController!, toViewController: leftViewController, operation: .replaceLeftController, animated: animated)
+            swapFromViewController(self.leftViewController!, toViewController: leftViewController, operation: .replaceLeftController, animated: animated)
         }
         self.leftViewController = leftViewController
-        _reloadLeftShadow()
+        reloadLeftShadow()
     }
-
+    
     /**
      Replace the main view controller.
-
+     
      - Parameters:
-        - mainViewController: A subclass of UIViewController.
-        - animated:           Specify true to animate the replacement or false if you do not want the replacement to be animated.
+     - mainViewController: A subclass of UIViewController.
+     - animated:           Specify true to animate the replacement or false if you do not want the replacement to be animated.
      */
     @objc open func setMainViewController(_ mainViewController: UIViewController, animated: Bool) {
-        if (self.mainViewController != nil) && animated {
-            _swapFromViewController(self.mainViewController!, toViewController: mainViewController, operation: .replaceMainController, animated: animated)
+        if let mainViewVC = self.mainViewController, animated {
+            swapFromViewController(mainViewVC, toViewController: mainViewController, operation: .replaceMainController, animated: animated)
         }
         self.mainViewController = mainViewController
-        _reloadMainShadow()
+        reloadMainShadow()
     }
-
+    
     /**
      Replace the right view controller.
-
+     
      - Parameters:
-        - rightViewController: A subclass of UIViewController.
-        - animated:            Specify true to animate the replacement or false if you do not want the replacement to be animated.
+     - rightViewController: A subclass of UIViewController.
+     - animated:            Specify true to animate the replacement or false if you do not want the replacement to be animated.
      */
     @objc open func setRightViewController(_ rightViewController: UIViewController, animated: Bool) {
         if isRightPresentViewHierarchically {
             let frame: CGRect = adjustsFrameForController(rightViewController)
             rightViewController.view.frame = frame
         }
-        _reloadSideBlurEffectStyle(style: self.rightViewBlurEffectStyle.rawValue, forController: rightViewController, forOperation: .replaceRightController)
+        reloadSideBlurEffectStyle(style: rightViewBlurEffectStyle.rawValue, forController: rightViewController, forOperation: .replaceRightController)
         if isRightViewOpen {
-            _swapFromViewController(self.rightViewController!, toViewController: rightViewController, operation: .replaceRightController, animated: animated)
+            swapFromViewController(self.rightViewController!, toViewController: rightViewController, operation: .replaceRightController, animated: animated)
         }
         self.rightViewController = rightViewController
-        _reloadRightShadow()
+        reloadRightShadow()
     }
-
+    
     /**
      Sets the mainViewController pushing it and hide left view controller.
-
+     
      - Parameters:
-        - mainViewController: A subclass of UIViewController.
-        - animated:           Specify true to animate the replacement or false if you do not want the replacement to be animated.
+     - mainViewController: A subclass of UIViewController.
+     - animated:           Specify true to animate the replacement or false if you do not want the replacement to be animated.
      */
     @objc open func pushMainViewController(_ mainViewController: UIViewController, animated: Bool) {
         var operation: PBRevealControllerOperation
         if isLeftViewOpen {
             operation = .pushMainControllerFromLeft
-        }
-        else if isRightViewOpen {
+        } else if isRightViewOpen {
             operation = .pushMainControllerFromRight
-        }
-        else {
+        } else {
             return
         }
         
-        let fromViewController: UIViewController? = self.mainViewController
+        let fromViewController = self.mainViewController
         self.mainViewController = mainViewController
-        _pushFromViewController(fromViewController!, toViewController: mainViewController, operation: operation, animated: animated)
+        pushFromViewController(fromViewController!, toViewController: mainViewController, operation: operation, animated: animated)
     }
-
+    
     /**
      Reveal left view or hide it if shown. Hide the right view if it is open and show the left view.
      */
     @IBAction @objc open func revealLeftView() {
-        if (self.leftViewController != nil) {
-            if isLeftViewOpen {
-                hideLeftView(animated: true)
-                return
-            }
-            if isRightViewOpen {
-                hideRightView(animated: true)
-            }
-            if delegate?.revealController?(self, shouldShowLeft: self.leftViewController!) == false {
-                return
-            }
-            delegate?.revealController?(self, willShowLeft: self.leftViewController!)
-            var leftFrame: CGRect = self.leftViewController!.view.frame
-            if self.isLeftPresentViewOnTop {
-                leftFrame.origin.x = -(self.leftViewRevealWidth)
-            }
-            else {
-                leftFrame.origin.x = -(self.leftViewRevealDisplacement)
-            }
-            leftFrame.size.width = self.leftViewRevealWidth
-            self.leftViewController?.view.frame = leftFrame
-            if self.isLeftPresentViewOnTop {
-                self.contentView?.addSubview((self.leftViewController?.view)!)
-            }
-            else {
-                self.contentView?.insertSubview((self.leftViewController?.view)!, belowSubview: (self.mainViewController?.view)!)
-            }
-            addChildViewController(self.leftViewController!)
-            self.leftViewController?.didMove(toParentViewController: self)
-            let completion: (() -> Void) = {() -> Void in
-                self.isLeftViewOpen = true
-                #if os(iOS)
-                    self.tapGestureRecognizer?.cancelsTouchesInView = true
-                #endif
-                #if os(tvOS)
-                    self.tvOSLeftRevealButton?.removeFromSuperview()
-                    self.tvOSRightRevealButton?.removeFromSuperview()
-                    self.setNeedsFocusUpdate()
-                    self.updateFocusIfNeeded()
-                #endif
-                self.delegate?.revealController?(self, didShowLeft: self.leftViewController!)
-            }
-            leftFrame.origin.x = 0
-            leftFrame.size.width = self.leftViewRevealWidth
-            var mainFrame: CGRect = self.mainViewController!.view.frame
-            if !self.isLeftPresentViewOnTop {
-                mainFrame.origin.x = self.leftViewRevealWidth
-            }
-            if (floor(NSFoundationVersionNumber) >= 7.0) {
-                self.leftViewController?.view.layoutIfNeeded()
-                UIView.animate(withDuration: leftToggleAnimationDuration, delay: 0.0, usingSpringWithDamping: leftToggleSpringDampingRatio, initialSpringVelocity: leftToggleSpringVelocity, options: .layoutSubviews, animations: {() -> Void in
-                    self.leftViewController?.view.layoutIfNeeded()
-                    self.leftViewController?.view.frame = leftFrame
-                    self.mainViewController?.view.frame = mainFrame
-                }, completion: {(_ finished: Bool) -> Void in
-                    completion()
-                })
-            }
-            else {
-                self.leftViewController?.view.layoutIfNeeded()
-                UIView.animate(withDuration: leftToggleAnimationDuration, delay: 0.0, options: .layoutSubviews, animations: {() -> Void in
-                    self.leftViewController?.view.layoutIfNeeded()
-                    self.leftViewController?.view.frame = leftFrame
-                    self.mainViewController?.view.frame = mainFrame
-                }, completion: {(_ finished: Bool) -> Void in
-                    completion()
-                })
-            }
+        guard let leftViewController = leftViewController else { return }
+        if isLeftViewOpen {
+            hideLeftView(animated: true)
+            return
+        }
+        if isRightViewOpen {
+            hideRightView(animated: true)
+        }
+        if delegate?.revealController?(self, shouldShowLeft: leftViewController) == false {
+            return
+        }
+        delegate?.revealController?(self, willShowLeft: leftViewController)
+        var leftFrame = leftViewController.view.frame
+        if isLeftPresentViewOnTop {
+            leftFrame.origin.x = -(leftViewRevealWidth)
+        } else {
+            leftFrame.origin.x = -(leftViewRevealDisplacement)
+        }
+        leftFrame.size.width = leftViewRevealWidth
+        leftViewController.view.frame = leftFrame
+        if isLeftPresentViewOnTop {
+            contentView?.addSubview(leftViewController.view)
+        } else {
+            contentView?.insertSubview(leftViewController.view, belowSubview: (mainViewController?.view)!)
+        }
+        addChildViewController(leftViewController)
+        leftViewController.didMove(toParentViewController: self)
+        let completion: (() -> Void) = { () -> Void in
+            self.isLeftViewOpen = true
+            #if os(iOS)
+                self.tapGestureRecognizer?.cancelsTouchesInView = true
+            #endif
+            #if os(tvOS)
+                tvOSLeftRevealButton?.removeFromSuperview()
+                tvOSRightRevealButton?.removeFromSuperview()
+                setNeedsFocusUpdate()
+                updateFocusIfNeeded()
+            #endif
+            self.delegate?.revealController?(self, didShowLeft: leftViewController)
+        }
+        leftFrame.origin.x = 0
+        leftFrame.size.width = leftViewRevealWidth
+        var mainFrame: CGRect = mainViewController!.view.frame
+        if !isLeftPresentViewOnTop {
+            mainFrame.origin.x = leftViewRevealWidth
+        }
+        if (floor(NSFoundationVersionNumber) >= 7.0) {
+            leftViewController.view.setNeedsLayout()
+            UIView.animate(withDuration: leftToggleAnimationDuration, delay: 0.0, usingSpringWithDamping: leftToggleSpringDampingRatio, initialSpringVelocity: leftToggleSpringVelocity, options: .layoutSubviews, animations: { () -> Void in
+                leftViewController.view.setNeedsLayout()
+                leftViewController.view.frame = leftFrame
+                self.mainViewController?.view.frame = mainFrame
+            }, completion: { (_ finished: Bool) -> Void in
+                completion()
+            })
+        } else {
+            leftViewController.view.setNeedsLayout()
+            UIView.animate(withDuration: leftToggleAnimationDuration, delay: 0.0, options: .layoutSubviews, animations: { () -> Void in
+                leftViewController.view.setNeedsLayout()
+                leftViewController.view.frame = leftFrame
+                self.mainViewController?.view.frame = mainFrame
+            }, completion: { (_ finished: Bool) -> Void in
+                completion()
+            })
         }
     }
-
+    
     /**
      Reveal right view or hide it if shown.  Hide the left view if it is open and show the right view.
      */
     @IBAction @objc open func revealRightView() {
-        if (self.rightViewController != nil) {
-            if isRightViewOpen {
-                hideRightView(animated: true)
-                return
-            }
-            if isLeftViewOpen {
-                hideLeftView(animated: true)
-            }
-            if delegate?.revealController?(self, shouldShowRight: self.rightViewController!) == false {
-                return
-            }
-            delegate?.revealController?(self, willShowRight: self.rightViewController!)
-            var rightFrame: CGRect = self.rightViewController!.view.frame
-            if self.isRightPresentViewOnTop {
-                rightFrame.origin.x = view.bounds.size.width
-            }
-            else {
-                rightFrame.origin.x = view.bounds.size.width - (rightViewRevealWidth) + rightViewRevealDisplacement
-            }
-            rightFrame.size.width = rightViewRevealWidth
-            self.rightViewController?.view.frame = rightFrame
-            if self.isRightPresentViewOnTop {
-                self.contentView?.addSubview((self.rightViewController?.view)!)
-            }
-            else {
-                self.contentView?.insertSubview((self.rightViewController?.view)!, belowSubview: (self.mainViewController?.view)!)
-            }
-            addChildViewController(self.rightViewController!)
-            self.rightViewController?.didMove(toParentViewController: self)
-            let completion: (() -> Void) = {() -> Void in
-                self.isRightViewOpen = true
-                #if os(iOS)
-                    self.tapGestureRecognizer?.cancelsTouchesInView = true
-                #endif
-                #if os(tvOS)
-                    self.tvOSLeftRevealButton?.removeFromSuperview()
-                    self.tvOSRightRevealButton?.removeFromSuperview()
-                    self.setNeedsFocusUpdate()
-                    self.updateFocusIfNeeded()
-                #endif
-                self.delegate?.revealController?(self, didShowRight: self.rightViewController!)
-            }
-            rightFrame.origin.x = view.bounds.size.width - self.rightViewRevealWidth
-            rightFrame.size.width = self.rightViewRevealWidth
-            var mainFrame: CGRect = self.mainViewController!.view.frame
-            if !self.isRightPresentViewOnTop {
-                mainFrame.origin.x = -(self.rightViewRevealWidth)
-            }
-            if (floor(NSFoundationVersionNumber) >= 7.0) {
-                self.rightViewController?.view.layoutIfNeeded()
-                UIView.animate(withDuration: rightToggleAnimationDuration, delay: 0.0, usingSpringWithDamping: rightToggleSpringDampingRatio, initialSpringVelocity: rightToggleSpringVelocity, options: .layoutSubviews, animations: {() -> Void in
-                    self.rightViewController?.view.layoutIfNeeded()
-                    self.rightViewController?.view.frame = rightFrame
-                    self.mainViewController?.view.frame = mainFrame
-                }, completion: {(_ finished: Bool) -> Void in
-                    completion()
-                })
-            }
-            else {
-                self.rightViewController?.view.layoutIfNeeded()
-                UIView.animate(withDuration: rightToggleAnimationDuration, delay: 0.0, options: .layoutSubviews, animations: {() -> Void in
-                    self.rightViewController?.view.layoutIfNeeded()
-                    self.rightViewController?.view.frame = rightFrame
-                    self.mainViewController?.view.frame = mainFrame
-                }, completion: {(_ finished: Bool) -> Void in
-                    completion()
-                })
-            }
+        guard let rightViewController = rightViewController else { return }
+        if isRightViewOpen {
+            hideRightView(animated: true)
+            return
+        }
+        if isLeftViewOpen {
+            hideLeftView(animated: true)
+        }
+        if delegate?.revealController?(self, shouldShowRight: rightViewController) == false {
+            return
+        }
+        delegate?.revealController?(self, willShowRight: rightViewController)
+        var rightFrame = rightViewController.view.frame
+        if isRightPresentViewOnTop {
+            rightFrame.origin.x = view.bounds.size.width
+        } else {
+            rightFrame.origin.x = view.bounds.size.width - (rightViewRevealWidth) + rightViewRevealDisplacement
+        }
+        rightFrame.size.width = rightViewRevealWidth
+        rightViewController.view.frame = rightFrame
+        if isRightPresentViewOnTop {
+            contentView?.addSubview(rightViewController.view)
+        } else {
+            contentView?.insertSubview(rightViewController.view, belowSubview: (mainViewController?.view)!)
+        }
+        addChildViewController(rightViewController)
+        rightViewController.didMove(toParentViewController: self)
+        let completion: (() -> Void) = { () -> Void in
+            self.isRightViewOpen = true
+            #if os(iOS)
+                self.tapGestureRecognizer?.cancelsTouchesInView = true
+            #endif
+            #if os(tvOS)
+                tvOSLeftRevealButton?.removeFromSuperview()
+                tvOSRightRevealButton?.removeFromSuperview()
+                setNeedsFocusUpdate()
+                updateFocusIfNeeded()
+            #endif
+            self.delegate?.revealController?(self, didShowRight: rightViewController)
+        }
+        rightFrame.origin.x = view.bounds.size.width - rightViewRevealWidth
+        rightFrame.size.width = rightViewRevealWidth
+        var mainFrame: CGRect = mainViewController!.view.frame
+        if !isRightPresentViewOnTop {
+            mainFrame.origin.x = -(rightViewRevealWidth)
+        }
+        if (floor(NSFoundationVersionNumber) >= 7.0) {
+            rightViewController.view.layoutIfNeeded()
+            UIView.animate(withDuration: rightToggleAnimationDuration, delay: 0.0, usingSpringWithDamping: rightToggleSpringDampingRatio, initialSpringVelocity: rightToggleSpringVelocity, options: .layoutSubviews, animations: { () -> Void in
+                rightViewController.view.layoutIfNeeded()
+                rightViewController.view.frame = rightFrame
+                self.mainViewController?.view.frame = mainFrame
+            }, completion: { (_ finished: Bool) -> Void in
+                completion()
+            })
+        } else {
+            self.rightViewController?.view.layoutIfNeeded()
+            UIView.animate(withDuration: rightToggleAnimationDuration, delay: 0.0, options: .layoutSubviews, animations: { () -> Void in
+                rightViewController.view.layoutIfNeeded()
+                rightViewController.view.frame = rightFrame
+                self.mainViewController?.view.frame = mainFrame
+            }, completion: { (_ finished: Bool) -> Void in
+                completion()
+            })
         }
     }
-
+    
     /**
      Hide left view.
-
+     
      - Parameters:
-        - animated: Specify true to animate the replacement or false if you do not want the replacement to be animated.
+     - animated: Specify true to animate the replacement or false if you do not want the replacement to be animated.
      */
     @objc open func hideLeftView(animated: Bool) {
-        if (self.leftViewController != nil) {
-            delegate?.revealController?(self, willHideLeft: self.leftViewController!)
-            let duration: TimeInterval = animated ? leftToggleAnimationDuration : 0.0
-            var leftFrame: CGRect = self.leftViewController!.view.frame
-            if isLeftPresentViewOnTop {
-                leftFrame.origin.x = -(self.leftViewRevealWidth)
-            }
-            else {
-                leftFrame.origin.x = -(self.leftViewRevealDisplacement)
-            }
-            leftFrame.size.width = self.leftViewRevealWidth
-            var mainFrame: CGRect = self.mainViewController!.view.frame
-            mainFrame.origin.x = 0
-            let completion: (() -> Void) = {() -> Void in
-                self.isLeftViewOpen = false
-                #if os(iOS)
-                    self.tapGestureRecognizer?.cancelsTouchesInView = false
-                    if self.isRightViewOpen {
-                        self.tapGestureRecognizer?.cancelsTouchesInView = true
-                    }
-                #endif
-                self.leftViewController?.view.removeFromSuperview()
-                self.leftViewController?.willMove(toParentViewController: nil)
-                self.leftViewController?.removeFromParentViewController()
-                #if os(tvOS)
-                    self.setNeedsFocusUpdate()
-                    self.updateFocusIfNeeded()
-                    self.contentView?.addSubview(self.tvOSLeftRevealButton!)
-                    self.contentView?.addSubview(self.tvOSRightRevealButton!)
-                #endif
-                self.delegate?.revealController?(self, didHideLeft: self.leftViewController!)
-            }
-            if (floor(NSFoundationVersionNumber) >= 7.0) {
-                self.leftViewController?.view.layoutIfNeeded()
-                UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: leftToggleSpringDampingRatio, initialSpringVelocity: leftToggleSpringVelocity, options: .layoutSubviews, animations: {() -> Void in
-                    self.leftViewController?.view.layoutIfNeeded()
-                    self.leftViewController?.view.frame = leftFrame
-                    self.mainViewController?.view.frame = mainFrame
-                }, completion: {(_ finished: Bool) -> Void in
-                    completion()
-                })
-            }
-            else {
-                self.leftViewController?.view.layoutIfNeeded()
-                UIView.animate(withDuration: duration, delay: 0.0, options: .layoutSubviews, animations: {() -> Void in
-                    self.leftViewController?.view.layoutIfNeeded()
-                    self.leftViewController?.view.frame = leftFrame
-                    self.mainViewController?.view.frame = mainFrame
-                }, completion: {(_ finished: Bool) -> Void in
-                    completion()
-                })
-            }
+        guard let leftViewController = leftViewController else { return }
+        delegate?.revealController?(self, willHideLeft: leftViewController)
+        let duration: TimeInterval = animated ? leftToggleAnimationDuration : 0.0
+        var leftFrame = leftViewController.view.frame
+        if isLeftPresentViewOnTop {
+            leftFrame.origin.x = -(leftViewRevealWidth)
+        } else {
+            leftFrame.origin.x = -(leftViewRevealDisplacement)
+        }
+        leftFrame.size.width = leftViewRevealWidth
+        var mainFrame = mainViewController!.view.frame
+        mainFrame.origin.x = 0
+        let completion: (() -> Void) = { () -> Void in
+            self.isLeftViewOpen = false
+            #if os(iOS)
+                self.tapGestureRecognizer?.cancelsTouchesInView = false
+                if self.isRightViewOpen {
+                    self.tapGestureRecognizer?.cancelsTouchesInView = true
+                }
+            #endif
+            leftViewController.view.removeFromSuperview()
+            leftViewController.willMove(toParentViewController: nil)
+            leftViewController.removeFromParentViewController()
+            #if os(tvOS)
+                self.setNeedsFocusUpdate()
+                self.updateFocusIfNeeded()
+                self.contentView?.addSubview(self.tvOSLeftRevealButton!)
+                self.contentView?.addSubview(self.tvOSRightRevealButton!)
+            #endif
+            self.delegate?.revealController?(self, didHideLeft: leftViewController)
+        }
+        if (floor(NSFoundationVersionNumber) >= 7.0) {
+            leftViewController.view.layoutIfNeeded()
+            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: leftToggleSpringDampingRatio, initialSpringVelocity: leftToggleSpringVelocity, options: .layoutSubviews, animations: { () -> Void in
+                leftViewController.view.layoutIfNeeded()
+                leftViewController.view.frame = leftFrame
+                self.mainViewController?.view.frame = mainFrame
+            }, completion: { (_ finished: Bool) -> Void in
+                completion()
+            })
+        } else {
+            leftViewController.view.layoutIfNeeded()
+            UIView.animate(withDuration: duration, delay: 0.0, options: .layoutSubviews, animations: { () -> Void in
+                leftViewController.view.layoutIfNeeded()
+                leftViewController.view.frame = leftFrame
+                self.mainViewController?.view.frame = mainFrame
+            }, completion: { (_ finished: Bool) -> Void in
+                completion()
+            })
         }
     }
-
+    
     /**
      Hide right view.
-
+     
      - Parameters:
-        - animated: Specify true to animate the replacement or false if you do not want the replacement to be animated.
+     - animated: Specify true to animate the replacement or false if you do not want the replacement to be animated.
      */
     @objc open func hideRightView(animated: Bool) {
-        if (self.rightViewController != nil) {
-            delegate?.revealController?(self, willHideRight: self.rightViewController!)
-            let duration: TimeInterval = animated ? rightToggleAnimationDuration : 0.0
-            var rightFrame: CGRect = self.rightViewController!.view.frame
-            if self.isRightPresentViewOnTop {
-                rightFrame.origin.x = view.bounds.size.width
-            }
-            else {
-                rightFrame.origin.x = view.bounds.size.width - (rightViewRevealWidth) + rightViewRevealDisplacement
-            }
-            rightFrame.size.width = rightViewRevealWidth
-            var mainFrame: CGRect = self.mainViewController!.view.frame
-            mainFrame.origin.x = 0
-            let completion: (() -> Void) = {() -> Void in
-                self.isRightViewOpen = false
-                #if os(iOS)
-                    self.tapGestureRecognizer?.cancelsTouchesInView = false
-                    if self.isLeftViewOpen {
-                        self.tapGestureRecognizer?.cancelsTouchesInView = true
-                    }
-                #endif
-                self.rightViewController?.view.removeFromSuperview()
-                self.rightViewController?.willMove(toParentViewController: nil)
-                self.rightViewController?.removeFromParentViewController()
-                #if os(tvOS)
-                    self.setNeedsFocusUpdate()
-                    self.updateFocusIfNeeded()
-                    self.contentView?.addSubview(self.tvOSLeftRevealButton!)
-                    self.contentView?.addSubview(self.tvOSRightRevealButton!)
-                #endif
-                self.delegate?.revealController?(self, didHideRight: self.rightViewController!)
-            }
-            if (floor(NSFoundationVersionNumber) >= 7.0) {
-                self.rightViewController?.view.layoutIfNeeded()
-                UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: rightToggleSpringDampingRatio, initialSpringVelocity: rightToggleSpringVelocity, options: .layoutSubviews, animations: {() -> Void in
-                    self.rightViewController?.view.layoutIfNeeded()
-                    self.rightViewController?.view.frame = rightFrame
-                    self.mainViewController?.view.frame = mainFrame
-                }, completion: {(_ finished: Bool) -> Void in
-                    completion()
-                })
-            }
-            else {
-                self.rightViewController?.view.layoutIfNeeded()
-                UIView.animate(withDuration: duration, delay: 0.0, options: .layoutSubviews, animations: {() -> Void in
-                    self.rightViewController?.view.layoutIfNeeded()
-                    self.rightViewController?.view.frame = rightFrame
-                    self.mainViewController?.view.frame = mainFrame
-                }, completion: {(_ finished: Bool) -> Void in
-                    completion()
-                })
-            }
+        guard let rightViewController = rightViewController else { return }
+        delegate?.revealController?(self, willHideRight: rightViewController)
+        let duration: TimeInterval = animated ? rightToggleAnimationDuration : 0.0
+        var rightFrame = rightViewController.view.frame
+        if isRightPresentViewOnTop {
+            rightFrame.origin.x = view.bounds.size.width
+        } else {
+            rightFrame.origin.x = view.bounds.size.width - (rightViewRevealWidth) + rightViewRevealDisplacement
+        }
+        rightFrame.size.width = rightViewRevealWidth
+        var mainFrame = mainViewController!.view.frame
+        mainFrame.origin.x = 0
+        let completion: (() -> Void) = { () -> Void in
+            self.isRightViewOpen = false
+            #if os(iOS)
+                self.tapGestureRecognizer?.cancelsTouchesInView = false
+                if self.isLeftViewOpen {
+                    self.tapGestureRecognizer?.cancelsTouchesInView = true
+                }
+            #endif
+            rightViewController.view.removeFromSuperview()
+            rightViewController.willMove(toParentViewController: nil)
+            rightViewController.removeFromParentViewController()
+            #if os(tvOS)
+                self.setNeedsFocusUpdate()
+                self.updateFocusIfNeeded()
+                self.contentView?.addSubview(self.tvOSLeftRevealButton!)
+                self.contentView?.addSubview(self.tvOSRightRevealButton!)
+            #endif
+            self.delegate?.revealController?(self, didHideRight: rightViewController)
+        }
+        if (floor(NSFoundationVersionNumber) >= 7.0) {
+            rightViewController.view.layoutIfNeeded()
+            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: rightToggleSpringDampingRatio, initialSpringVelocity: rightToggleSpringVelocity, options: .layoutSubviews, animations: { () -> Void in
+                rightViewController.view.layoutIfNeeded()
+                rightViewController.view.frame = rightFrame
+                self.mainViewController?.view.frame = mainFrame
+            }, completion: { (_ finished: Bool) -> Void in
+                completion()
+            })
+        } else {
+            rightViewController.view.layoutIfNeeded()
+            UIView.animate(withDuration: duration, delay: 0.0, options: .layoutSubviews, animations: { () -> Void in
+                rightViewController.view.layoutIfNeeded()
+                rightViewController.view.frame = rightFrame
+                self.mainViewController?.view.frame = mainFrame
+            }, completion: { (_ finished: Bool) -> Void in
+                completion()
+            })
         }
     }
-
+    
     // MARK: - Private methods
-
-    private func _reloadMainShadow() {
-        let layer: CALayer? = self.mainViewController?.view.layer
-        layer?.masksToBounds = false
-        layer?.shadowColor = self.mainViewShadowColor.cgColor
-        layer?.shadowOpacity = self.mainViewShadowOpacity
-        layer?.shadowOffset = self.mainViewShadowOffset
-        layer?.shadowRadius = self.mainViewShadowRadius
+    
+    private func reloadMainShadow() {
+        guard let layer = mainViewController?.view.layer else { return }
+        layer.masksToBounds = false
+        layer.shadowColor = mainViewShadowColor.cgColor
+        layer.shadowOpacity = mainViewShadowOpacity
+        layer.shadowOffset = mainViewShadowOffset
+        layer.shadowRadius = mainViewShadowRadius
     }
-
-    private func _reloadLeftShadow() {
-        if self.leftShadowOpacity != 0.0 {
-            self.leftViewController?.view.layer.shadowOpacity = 0.0
-            if self.leftShadowView == nil {
-                self.leftShadowView = UIView(frame: (self.leftViewController?.view.bounds)!)
+    
+    private func reloadLeftShadow() {
+        if leftShadowOpacity != 0.0 {
+            leftViewController?.view.layer.shadowOpacity = 0.0
+            if leftShadowView == nil {
+                leftShadowView = UIView(frame: (leftViewController?.view.bounds)!)
             }
-            self.leftShadowView?.translatesAutoresizingMaskIntoConstraints = false
+            leftShadowView?.translatesAutoresizingMaskIntoConstraints = false
             
-            self.leftShadowView?.backgroundColor = UIColor.black
-            self.leftShadowView?.layer.masksToBounds = false
-            self.leftShadowView?.layer.shadowColor = self.leftViewShadowColor.cgColor
-            self.leftShadowView?.layer.shadowOffset = self.leftViewShadowOffset
-            self.leftShadowView?.layer.shadowOpacity = Float(self.leftViewShadowOpacity)
-            self.leftShadowView?.layer.shadowRadius = self.leftViewShadowRadius
+            leftShadowView?.backgroundColor = UIColor.black
+            leftShadowView?.layer.masksToBounds = false
+            leftShadowView?.layer.shadowColor = leftViewShadowColor.cgColor
+            leftShadowView?.layer.shadowOffset = leftViewShadowOffset
+            leftShadowView?.layer.shadowOpacity = Float(leftViewShadowOpacity)
+            leftShadowView?.layer.shadowRadius = leftViewShadowRadius
             
-            self.leftViewController?.view.insertSubview(self.leftShadowView!, at: 0)
+            leftViewController?.view.insertSubview(leftShadowView!, at: 0)
             
             // Set constraints programmatically, as this view is animatable
-            NSLayoutConstraint(item: self.leftShadowView!, attribute: .trailing, relatedBy: .equal, toItem: self.leftViewController?.view, attribute: .trailingMargin, multiplier: 1.0, constant: 0.0).isActive = true
-            NSLayoutConstraint(item: self.leftShadowView!, attribute: .top, relatedBy: .equal, toItem: self.leftViewController?.view, attribute: .topMargin, multiplier: 1.0, constant: 0.0).isActive = true
-            NSLayoutConstraint(item: self.leftShadowView!, attribute: .bottom, relatedBy: .equal, toItem: self.leftViewController?.view, attribute: .bottomMargin, multiplier: 1.0, constant: 0.0).isActive = true
-            NSLayoutConstraint(item: self.leftShadowView!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 5.0).isActive = true
+            NSLayoutConstraint(item: leftShadowView!, attribute: .trailing, relatedBy: .equal, toItem: leftViewController?.view, attribute: .trailingMargin, multiplier: 1.0, constant: 0.0).isActive = true
+            NSLayoutConstraint(item: leftShadowView!, attribute: .top, relatedBy: .equal, toItem: leftViewController?.view, attribute: .topMargin, multiplier: 1.0, constant: 0.0).isActive = true
+            NSLayoutConstraint(item: leftShadowView!, attribute: .bottom, relatedBy: .equal, toItem: leftViewController?.view, attribute: .bottomMargin, multiplier: 1.0, constant: 0.0).isActive = true
+            NSLayoutConstraint(item: leftShadowView!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 5.0).isActive = true
             return
         }
-        let layer: CALayer? = self.leftViewController?.view.layer
-        layer?.masksToBounds = false
-        layer?.shadowColor = self.leftViewShadowColor.cgColor
-        layer?.shadowOpacity = Float(self.leftViewShadowOpacity)
-        layer?.shadowOffset = self.leftViewShadowOffset
-        layer?.shadowRadius = self.leftViewShadowRadius
+        
+        if let layer = leftViewController?.view.layer {
+            layer.masksToBounds = false
+            layer.shadowColor = leftViewShadowColor.cgColor
+            layer.shadowOpacity = Float(leftViewShadowOpacity)
+            layer.shadowOffset = leftViewShadowOffset
+            layer.shadowRadius = leftViewShadowRadius
+        }
     }
-
-    private func _reloadRightShadow() {
-        if self.rightShadowOpacity != 0.0 {
-            self.rightViewController?.view.layer.shadowOpacity = 0.0
+    
+    private func reloadRightShadow() {
+        if rightShadowOpacity != 0.0 {
+            rightViewController?.view.layer.shadowOpacity = 0.0
             if rightShadowView == nil {
-                self.rightShadowView = UIView(frame: (self.rightViewController?.view.bounds)!)
+                rightShadowView = UIView(frame: (rightViewController?.view.bounds)!)
             }
-            self.rightShadowView?.translatesAutoresizingMaskIntoConstraints = false
+            rightShadowView?.translatesAutoresizingMaskIntoConstraints = false
             
-            self.rightShadowView?.backgroundColor = UIColor.white
-            self.rightShadowView?.layer.masksToBounds = false
-            self.rightShadowView?.layer.shadowColor = self.rightViewShadowColor.cgColor
-            self.rightShadowView?.layer.shadowOffset = self.rightViewShadowOffset
-            self.rightShadowView?.layer.shadowOpacity = Float(self.rightViewShadowOpacity)
-            self.rightShadowView?.layer.shadowRadius = self.rightViewShadowRadius
+            rightShadowView?.backgroundColor = UIColor.white
+            rightShadowView?.layer.masksToBounds = false
+            rightShadowView?.layer.shadowColor = rightViewShadowColor.cgColor
+            rightShadowView?.layer.shadowOffset = rightViewShadowOffset
+            rightShadowView?.layer.shadowOpacity = Float(rightViewShadowOpacity)
+            rightShadowView?.layer.shadowRadius = rightViewShadowRadius
             
-            self.rightViewController?.view.insertSubview(self.rightShadowView!, at: 0)
+            rightViewController?.view.insertSubview(rightShadowView!, at: 0)
             
             // Set constraints programmatically, as this view is animatable
-            NSLayoutConstraint(item: self.rightShadowView!, attribute: .leading, relatedBy: .equal, toItem: self.rightViewController?.view, attribute: .leadingMargin, multiplier: 1.0, constant: 0.0).isActive = true
-            NSLayoutConstraint(item: self.rightShadowView!, attribute: .top, relatedBy: .equal, toItem: self.rightViewController?.view, attribute: .topMargin, multiplier: 1.0, constant: 0.0).isActive = true
-            NSLayoutConstraint(item: self.rightShadowView!, attribute: .bottom, relatedBy: .equal, toItem: rightViewController?.view, attribute: .bottomMargin, multiplier: 1.0, constant: 0.0).isActive = true
-            NSLayoutConstraint(item: self.rightShadowView!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 5.0).isActive = true
+            NSLayoutConstraint(item: rightShadowView!, attribute: .leading, relatedBy: .equal, toItem: rightViewController?.view, attribute: .leadingMargin, multiplier: 1.0, constant: 0.0).isActive = true
+            NSLayoutConstraint(item: rightShadowView!, attribute: .top, relatedBy: .equal, toItem: rightViewController?.view, attribute: .topMargin, multiplier: 1.0, constant: 0.0).isActive = true
+            NSLayoutConstraint(item: rightShadowView!, attribute: .bottom, relatedBy: .equal, toItem: rightViewController?.view, attribute: .bottomMargin, multiplier: 1.0, constant: 0.0).isActive = true
+            NSLayoutConstraint(item: rightShadowView!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 5.0).isActive = true
             return
         }
-        let layer: CALayer? = self.rightViewController?.view.layer
-        layer?.masksToBounds = false
-        layer?.shadowColor = self.rightViewShadowColor.cgColor
-        layer?.shadowOpacity = Float(self.rightViewShadowOpacity)
-        layer?.shadowOffset = self.rightViewShadowOffset
-        layer?.shadowRadius = self.rightViewShadowRadius
+        if let layer = rightViewController?.view.layer {
+            layer.masksToBounds = false
+            layer.shadowColor = rightViewShadowColor.cgColor
+            layer.shadowOpacity = Float(rightViewShadowOpacity)
+            layer.shadowOffset = rightViewShadowOffset
+            layer.shadowRadius = rightViewShadowRadius
+        }
     }
-
-    private func _reloadSideBlurEffectStyle(style: Int, forController sideViewController: UIViewController?, forOperation operation:PBRevealControllerOperation) {
-        if sideViewController == nil {
+    
+    private func reloadSideBlurEffectStyle(style: Int, forController sideViewController: UIViewController?, forOperation operation: PBRevealControllerOperation) {
+        guard let sideViewController = sideViewController else {
             return
         }
         if (floor(NSFoundationVersionNumber) >= 8.0) {
             var tableView: UITableView?
-            if (sideViewController is UINavigationController) {
-                let nc: UINavigationController? = (sideViewController as? UINavigationController)
-                tableView = self.tableViewInView((nc?.topViewController?.view)!)
-            }
-            else {
-                tableView = self.tableViewInView((sideViewController?.view)!)
+            if let nc = sideViewController as? UINavigationController,
+                let topViewController = nc.topViewController {
+                tableView = tableViewInView(topViewController.view)
+            } else {
+                tableView = tableViewInView(sideViewController.view)
             }
             if style != PBRevealBlurEffectStyle.none.rawValue {
                 let blurEffect = UIBlurEffect(style: UIBlurEffectStyle(rawValue: style)!)
@@ -1595,25 +1520,25 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
                 #endif
                 switch operation {
                 case .replaceLeftController:
-                    self.leftEffectView?.removeFromSuperview()
-                    self.leftEffectView = sideEffectView
+                    leftEffectView?.removeFromSuperview()
+                    leftEffectView = sideEffectView
                     if #available(iOS 10, *) {
                         if (floor(NSFoundationVersionNumber) >= 10.0) {
-                            if self.leftViewShadowOpacity > 0.0 {
-                                self.leftShadowOpacity = self.leftViewShadowOpacity
-                                _reloadLeftShadow()
+                            if leftViewShadowOpacity > 0.0 {
+                                leftShadowOpacity = leftViewShadowOpacity
+                                reloadLeftShadow()
                             }
                         }
                     }
                     
                 case .replaceRightController:
-                    self.rightEffectView?.removeFromSuperview()
-                    self.rightEffectView = sideEffectView
+                    rightEffectView?.removeFromSuperview()
+                    rightEffectView = sideEffectView
                     if #available(iOS 10, *) {
                         if (floor(NSFoundationVersionNumber) >= 10.0) {
-                            if self.rightViewShadowOpacity > 0.0 {
-                                self.rightShadowOpacity = self.rightViewShadowOpacity
-                                _reloadRightShadow()
+                            if rightViewShadowOpacity > 0.0 {
+                                rightShadowOpacity = rightViewShadowOpacity
+                                reloadRightShadow()
                             }
                         }
                     }
@@ -1622,104 +1547,106 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
                     break
                 }
                 
-                if tableView != nil {
+                if let tableView = tableView {
                     switch operation {
                     case .replaceLeftController:
-                        self.leftEffectView?.frame = (tableView?.bounds)!
-                        tableView?.backgroundView = self.leftEffectView
+                        leftEffectView?.frame = tableView.bounds
+                        tableView.backgroundView = leftEffectView
                     case .replaceRightController:
-                        self.rightEffectView?.frame = (tableView?.bounds)!
-                        tableView?.backgroundView = self.rightEffectView
+                        rightEffectView?.frame = tableView.bounds
+                        tableView.backgroundView = rightEffectView
                     default:
                         break
                     }
                     
-                    tableView?.backgroundColor = UIColor.clear
+                    tableView.backgroundColor = UIColor.clear
                     #if os(iOS)
-                        tableView?.separatorEffect = vibrancyEffect
+                        tableView.separatorEffect = vibrancyEffect
                     #endif
-                }
-                else {
-                    var sideView: UIView? = sideViewController?.view
-                    if (sideViewController is UINavigationController) {
-                        let nc: UINavigationController? = (sideViewController as? UINavigationController)
-                        sideView = nc?.topViewController?.view
+                } else {
+                    var sideView = sideViewController.view
+                    if let nc = sideViewController as? UINavigationController
+                        , let topViewController = nc.topViewController {
+                        sideView = topViewController.view
                     }
                     sideView?.backgroundColor = UIColor.clear
                     switch operation {
                     case .replaceLeftController:
-                        self.leftEffectView?.frame = (sideView?.bounds)!
-                        sideView?.addSubview(self.leftEffectView!)
+                        leftEffectView?.frame = (sideView?.bounds)!
+                        sideView?.addSubview(leftEffectView!)
                     case .replaceRightController:
-                        self.rightEffectView?.frame = (sideView?.bounds)!
-                        sideView?.addSubview(self.rightEffectView!)
+                        rightEffectView?.frame = (sideView?.bounds)!
+                        sideView?.addSubview(rightEffectView!)
                     default:
                         break
                     }
                 }
-            }
-            else {
-                if tableView != nil {
-                    if ((tableView?.backgroundView) != nil) && (tableView?.backgroundView == self.leftEffectView || tableView?.backgroundView == self.rightEffectView) {
-                        tableView?.backgroundView = nil
+            } else {
+                if let tableView = tableView {
+                    if let backgroundView = tableView.backgroundView
+                        , (backgroundView == leftEffectView || backgroundView == rightEffectView) {
+                        tableView.backgroundView = nil
                         #if os(iOS)
-                            tableView?.separatorEffect = nil
+                            tableView.separatorEffect = nil
                         #endif
                     }
-                }
-                else {
+                } else {
                     switch operation {
                     case .replaceLeftController:
-                        self.leftEffectView?.removeFromSuperview()
+                        leftEffectView?.removeFromSuperview()
                     case .replaceRightController:
-                        self.rightEffectView?.removeFromSuperview()
+                        rightEffectView?.removeFromSuperview()
                     default:
                         break
                     }
                 }
                 switch operation {
                 case .replaceLeftController:
-                    self.leftEffectView = nil
-                    self.leftShadowOpacity = 0.0
-                    self.leftShadowView?.removeFromSuperview()
-                    _reloadLeftShadow()
+                    leftEffectView = nil
+                    leftShadowOpacity = 0.0
+                    leftShadowView?.removeFromSuperview()
+                    reloadLeftShadow()
                 case .replaceRightController:
-                    self.rightEffectView = nil
-                    self.rightShadowOpacity = 0.0
-                    self.rightShadowView?.removeFromSuperview()
-                    _reloadRightShadow()
+                    rightEffectView = nil
+                    rightShadowOpacity = 0.0
+                    rightShadowView?.removeFromSuperview()
+                    reloadRightShadow()
                 default:
                     break
                 }
             }
         }
     }
-
-    private func _setLeftViewController(leftViewController: UIViewController) {
+    
+    private func setLeftViewController(_ leftViewController: UIViewController) {
         setLeftViewController(leftViewController, animated: false)
     }
-
-    private func _setMainViewController(mainViewController: UIViewController) {
+    
+    private func setMainViewController(_ mainViewController: UIViewController) {
         setMainViewController(mainViewController, animated: false)
     }
-
-    private func _setRightViewController(rightViewController: UIViewController) {
+    
+    private func setRightViewController(_ rightViewController: UIViewController) {
         setRightViewController(rightViewController, animated: false)
     }
-
-    private func _swapFromViewController(_ fromViewController: UIViewController, toViewController: UIViewController, operation: PBRevealControllerOperation, animated: Bool) {
+    
+    private func swapFromViewController(_ fromViewController: UIViewController, toViewController: UIViewController, operation: PBRevealControllerOperation, animated: Bool) {
         let duration: TimeInterval = animated ? replaceViewAnimationDuration : 0.0
         if fromViewController != toViewController {
             toViewController.view.frame = fromViewController.view.frame
             delegate?.revealController?(self, willAdd: toViewController, for: operation, animated: animated)
             switch operation {
             case .replaceLeftController, .replaceRightController:
-                self.contentView?.insertSubview(toViewController.view, belowSubview: fromViewController.view)
+                contentView?.insertSubview(toViewController.view, belowSubview: fromViewController.view)
             case .replaceMainController:
-                self.contentView?.insertSubview(toViewController.view, belowSubview: fromViewController.view)
+                contentView?.insertSubview(toViewController.view, belowSubview: fromViewController.view)
                 #if os(iOS)
-                    self.contentView?.addGestureRecognizer(self.tapGestureRecognizer!)
-                    self.contentView?.addGestureRecognizer(self.panGestureRecognizer!)
+                    if let tapGestureRecognizer = tapGestureRecognizer {
+                        contentView?.addGestureRecognizer(tapGestureRecognizer)
+                    }
+                    if let panGestureRecognizer = panGestureRecognizer {
+                        contentView?.addGestureRecognizer(panGestureRecognizer)
+                    }
                 #endif
                 
             default:
@@ -1728,7 +1655,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
             
             addChildViewController(toViewController)
             fromViewController.willMove(toParentViewController: nil)
-            let completion: (() -> Void) = {() -> Void in
+            let completion: (() -> Void) = { () -> Void in
                 fromViewController.view.removeFromSuperview()
                 fromViewController.removeFromParentViewController()
                 toViewController.didMove(toParentViewController: self)
@@ -1737,29 +1664,26 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
             var customBlock: (() -> Void)?
             customBlock = delegate?.revealController?(self, blockFor: operation, from: fromViewController, to: toViewController, finalBlock: completion)
             if (floor(NSFoundationVersionNumber) >= 7.0) {
-                var animator: UIViewControllerAnimatedTransitioning? = nil
-                animator = delegate?.revealController?(self, animationControllerForTransitionFrom: fromViewController, to: toViewController, for: operation)
-                if animator != nil {
-                    let transitioningObject = PBContextTransitionObject(revealController: self, containerView: self.contentView!, fromViewController: fromViewController, toViewController: toViewController, completion: completion)
-                    animator?.animateTransition(using: transitioningObject)
+                if let animator = delegate?.revealController?(self, animationControllerForTransitionFrom: fromViewController, to: toViewController, for: operation) {
+                    let transitioningObject = PBContextTransitionObject(revealController: self, containerView: contentView!, fromViewController: fromViewController, toViewController: toViewController, completion: completion)
+                    animator.animateTransition(using: transitioningObject)
                     return
                 }
             }
-            if customBlock != nil {
-                customBlock!()
-            }
-            else {
-                UIView.transition(with: fromViewController.view, duration: duration, options: [.layoutSubviews, .transitionCrossDissolve], animations: {() -> Void in
+            if let customBlock = customBlock {
+                customBlock()
+            } else {
+                UIView.transition(with: fromViewController.view, duration: duration, options: [.layoutSubviews, .transitionCrossDissolve], animations: { () -> Void in
                     fromViewController.view.isHidden = true
-                }, completion: {(_ finished: Bool) -> Void in
+                }, completion: { (_ finished: Bool) -> Void in
                     completion()
                     fromViewController.view.isHidden = false
                 })
             }
         }
     }
-
-    private func _pushFromViewController(_ fromViewController: UIViewController, toViewController: UIViewController, operation: PBRevealControllerOperation, animated: Bool) {
+    
+    private func pushFromViewController(_ fromViewController: UIViewController, toViewController: UIViewController, operation: PBRevealControllerOperation, animated: Bool) {
         let duration: TimeInterval = animated ? (isLeftViewOpen ? leftToggleAnimationDuration : rightToggleAnimationDuration) : 0.0
         if fromViewController == toViewController {
             if operation == .pushMainControllerFromLeft {
@@ -1773,7 +1697,7 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
         toViewController.view.frame = fromViewController.view.frame
         delegate?.revealController?(self, willAdd: toViewController, for: operation, animated: animated)
         
-        let completion: (() -> Void) = {() -> Void in
+        let completion: (() -> Void) = { () -> Void in
             fromViewController.view.removeFromSuperview()
             fromViewController.removeFromParentViewController()
             toViewController.didMove(toParentViewController: self)
@@ -1784,79 +1708,81 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
                 self.hideRightView(animated: true)
             }
             #if os(iOS)
-                self.contentView?.addGestureRecognizer(self.tapGestureRecognizer!)
-                self.contentView?.addGestureRecognizer(self.panGestureRecognizer!)
+                if let tapGestureRecognizer = self.tapGestureRecognizer {
+                    self.contentView?.addGestureRecognizer(tapGestureRecognizer)
+                }
+                if let panGestureRecognizer = self.panGestureRecognizer {
+                    self.contentView?.addGestureRecognizer(panGestureRecognizer)
+                }
             #endif
             self.delegate?.revealController?(self, didAdd: toViewController, for: operation, animated: animated)
         }
-        self.contentView?.insertSubview(toViewController.view, belowSubview: fromViewController.view)
+        contentView?.insertSubview(toViewController.view, belowSubview: fromViewController.view)
         addChildViewController(toViewController)
         fromViewController.willMove(toParentViewController: nil)
-        if self.toggleAnimationType == .none {
+        
+        switch toggleAnimationType {
+        case .none:
             completion()
-        }
-        else if self.toggleAnimationType == .crossDissolve {
-            UIView.transition(with: fromViewController.view, duration: duration, options: [.layoutSubviews, .transitionCrossDissolve], animations: {() -> Void in
+        case .crossDissolve:
+            UIView.transition(with: fromViewController.view, duration: duration, options: [.layoutSubviews, .transitionCrossDissolve], animations: { () -> Void in
                 fromViewController.view.isHidden = true
-            }, completion: {(_ finished: Bool) -> Void in
+            }, completion: { (_ finished: Bool) -> Void in
                 completion()
                 fromViewController.view.isHidden = false
             })
-        }
-        else if self.toggleAnimationType == .pushSideView {
+        case .pushSideView:
             var sideViewController: UIViewController?
             var mainFrame: CGRect
             var sideFrame: CGRect
-            sideViewController = (self.isLeftViewOpen ? self.leftViewController : self.rightViewController)
-            self.contentView?.insertSubview(toViewController.view, aboveSubview: fromViewController.view)
+            sideViewController = (isLeftViewOpen ? leftViewController : rightViewController)
+            contentView?.insertSubview(toViewController.view, aboveSubview: fromViewController.view)
             mainFrame = toViewController.view.frame
             mainFrame.origin.x = (isLeftViewOpen ? leftViewRevealWidth : -(rightViewRevealWidth))
             toViewController.view.frame = mainFrame
             mainFrame.origin.x = 0.0
             sideFrame = (sideViewController?.view?.frame)!
-            sideFrame.origin.x = (self.isLeftViewOpen ? -(self.leftViewRevealWidth) : view.bounds.size.width)
-            UIView.animate(withDuration: duration, delay: 0.0, options: .layoutSubviews, animations: {() -> Void in
+            sideFrame.origin.x = (isLeftViewOpen ? -(leftViewRevealWidth) : view.bounds.size.width)
+            UIView.animate(withDuration: duration, delay: 0.0, options: .layoutSubviews, animations: { () -> Void in
                 toViewController.view.frame = mainFrame
                 sideViewController?.view?.frame = sideFrame
-            }, completion: {(_ finished: Bool) -> Void in
+            }, completion: { (_ finished: Bool) -> Void in
                 completion()
             })
-        }
-        else if self.toggleAnimationType == .spring {
+        case .spring:
             var sideViewController: UIViewController?
             var sidePresentViewOnTop: Bool
             var mainFrame: CGRect
             var sideFrame: CGRect
-            sideViewController = (self.isLeftViewOpen ? self.leftViewController : self.rightViewController)
-            self.contentView?.insertSubview(toViewController.view, aboveSubview: fromViewController.view)
-            sidePresentViewOnTop = (self.isLeftViewOpen ? self.isLeftPresentViewOnTop : self.isRightPresentViewOnTop)
+            sideViewController = (isLeftViewOpen ? leftViewController : rightViewController)
+            contentView?.insertSubview(toViewController.view, aboveSubview: fromViewController.view)
+            sidePresentViewOnTop = (isLeftViewOpen ? isLeftPresentViewOnTop : isRightPresentViewOnTop)
             sideFrame = (sideViewController?.view?.frame)!
-            sideFrame.origin.x += (self.isLeftViewOpen ? 0.0 : -(self.rightViewRevealOverdraw))
-            sideFrame.size.width += (self.isLeftViewOpen ? self.leftViewRevealOverdraw : self.rightViewRevealOverdraw)
+            sideFrame.origin.x += (isLeftViewOpen ? 0.0 : -(rightViewRevealOverdraw))
+            sideFrame.size.width += (isLeftViewOpen ? leftViewRevealOverdraw : rightViewRevealOverdraw)
             mainFrame = toViewController.view.frame
-            mainFrame.origin.x = (self.isLeftViewOpen ? self.leftViewRevealWidth + self.leftViewRevealOverdraw : -(self.rightViewRevealWidth) - self.rightViewRevealOverdraw)
+            mainFrame.origin.x = (isLeftViewOpen ? leftViewRevealWidth + leftViewRevealOverdraw : -(rightViewRevealWidth) - rightViewRevealOverdraw)
             toViewController.view.isHidden = true
-            UIView.animate(withDuration: duration / 2, delay: 0.0, options: .layoutSubviews, animations: {() -> Void in
+            UIView.animate(withDuration: duration / 2, delay: 0.0, options: .layoutSubviews, animations: { () -> Void in
                 sideViewController?.view?.frame = sideFrame
                 if !sidePresentViewOnTop {
                     fromViewController.view.frame = mainFrame
                     toViewController.view.frame = mainFrame
                 }
-            }, completion: {(_ finished: Bool) -> Void in
+            }, completion: { (_ finished: Bool) -> Void in
                 toViewController.view.frame = mainFrame
                 mainFrame.origin.x = 0.0
                 sideFrame.origin.x = (self.isLeftViewOpen ? -(self.leftViewRevealWidth) : self.view.bounds.size.width)
                 sideFrame.size.width = (self.isLeftViewOpen ? self.leftViewRevealWidth : self.rightViewRevealWidth)
                 toViewController.view.isHidden = false
-                UIView.animate(withDuration: duration / 2, delay: 0.0, options: .layoutSubviews, animations: {() -> Void in
+                UIView.animate(withDuration: duration / 2, delay: 0.0, options: .layoutSubviews, animations: { () -> Void in
                     sideViewController?.view?.frame = sideFrame
                     toViewController.view.frame = mainFrame
-                }, completion: {(_ finished: Bool) -> Void in
+                }, completion: { (_ finished: Bool) -> Void in
                     completion()
                 })
             })
-        }
-        else if self.toggleAnimationType == .custom {
+        case .custom:
             var customAnimation: (() -> Void)?
             customAnimation = delegate?.revealController?(self, animationBlockFor: operation, from: fromViewController, to: toViewController)
             var customCompletion: (() -> Void)?
@@ -1864,108 +1790,104 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
             var customBlock: (() -> Void)?
             customBlock = delegate?.revealController?(self, blockFor: operation, from: fromViewController, to: toViewController, finalBlock: completion)
             if (floor(NSFoundationVersionNumber) >= 7.0) {
-                var animator: UIViewControllerAnimatedTransitioning? = nil
-                animator = delegate?.revealController?(self, animationControllerForTransitionFrom: fromViewController, to: toViewController, for: operation)
-                if animator != nil {
-                    let transitioningObject = PBContextTransitionObject(revealController: self, containerView: self.contentView!, fromViewController: fromViewController, toViewController: toViewController, completion: completion)
-                    animator?.animateTransition(using: transitioningObject)
+                if let animator = delegate?.revealController?(self, animationControllerForTransitionFrom: fromViewController, to: toViewController, for: operation) {
+                    let transitioningObject = PBContextTransitionObject(revealController: self, containerView: contentView!, fromViewController: fromViewController, toViewController: toViewController, completion: completion)
+                    animator.animateTransition(using: transitioningObject)
                     return
                 }
             }
-            if customBlock != nil {
-                customBlock!()
-            }
-            else if customAnimation != nil {
-                UIView.animate(withDuration: duration, delay: 0.0, options: .layoutSubviews, animations: {() -> Void in
-                    customAnimation!()
-                }, completion: {(_ finished: Bool) -> Void in
+            if let customBlock = customBlock {
+                customBlock()
+            } else if let customAnimation = customAnimation {
+                UIView.animate(withDuration: duration, delay: 0.0, options: .layoutSubviews, animations: { () -> Void in
+                    customAnimation()
+                }, completion: { (_ finished: Bool) -> Void in
                     completion()
-                    if (customCompletion != nil) {
-                        customCompletion!()
+                    if let customCompletion = customCompletion {
+                        customCompletion()
                     }
                 })
             }
         }
-        
     }
-
-// MARK: - Gesture Recognizer
     
-#if os(tvOS)
+    // MARK: - Gesture Recognizer
+    
+    #if os(tvOS)
     @objc open func _tvOSLeftRevealButton() -> UIButton {
-        if self.tvOSLeftRevealButton == nil {
-            self.tvOSLeftRevealButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: self.view.bounds.size.height))
-            self.tvOSLeftRevealButton?.backgroundColor = UIColor.clear
-            self.contentView?.addSubview(self.tvOSLeftRevealButton!)
-        }
-        return self.tvOSLeftRevealButton!
+    if tvOSLeftRevealButton == nil {
+    tvOSLeftRevealButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: view.bounds.size.height))
+    tvOSLeftRevealButton?.backgroundColor = UIColor.clear
+    contentView?.addSubview(tvOSLeftRevealButton!)
     }
-
+    return tvOSLeftRevealButton!
+    }
+    
     @objc open func _tvOSRightRevealButton() -> UIButton {
-        if self.tvOSRightRevealButton == nil {
-            self.tvOSRightRevealButton = UIButton(frame: CGRect(x: self.view.bounds.size.width - 10.0, y: 0.0, width: 10.0, height: self.view.bounds.size.height))
-            self.tvOSRightRevealButton?.backgroundColor = UIColor.clear
-            self.contentView?.addSubview(self.tvOSRightRevealButton!)
-        }
-        return self.tvOSRightRevealButton!
+    if tvOSRightRevealButton == nil {
+    tvOSRightRevealButton = UIButton(frame: CGRect(x: view.bounds.size.width - 10.0, y: 0.0, width: 10.0, height: view.bounds.size.height))
+    tvOSRightRevealButton?.backgroundColor = UIColor.clear
+    contentView?.addSubview(tvOSRightRevealButton!)
     }
-
+    return tvOSRightRevealButton!
+    }
+    
     @objc open func _tvOSLeftSwipeGestureRecognizer() -> UISwipeGestureRecognizer {
-        if self.tvOSLeftSwipeGestureRecognizer == nil {
-            self.tvOSLeftSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self._handleLeftSwipeGesture))
-            self.tvOSLeftSwipeGestureRecognizer?.direction = .left
-            self.contentView?.addGestureRecognizer(self.tvOSLeftSwipeGestureRecognizer!)
-        }
-        return self.tvOSLeftSwipeGestureRecognizer!
+    if tvOSLeftSwipeGestureRecognizer == nil {
+    tvOSLeftSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(_handleLeftSwipeGesture))
+    tvOSLeftSwipeGestureRecognizer?.direction = .left
+    contentView?.addGestureRecognizer(tvOSLeftSwipeGestureRecognizer!)
     }
-
+    return tvOSLeftSwipeGestureRecognizer!
+    }
+    
     @objc open func _tvOSRightSwipeGestureRecognizer() -> UISwipeGestureRecognizer {
-        if self.tvOSRightSwipeGestureRecognizer == nil {
-            self.tvOSRightSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self._handleRightSwipeGesture))
-            self.tvOSRightSwipeGestureRecognizer?.direction = .right
-            self.contentView?.addGestureRecognizer(self.tvOSRightSwipeGestureRecognizer!)
-        }
-        return self.tvOSRightSwipeGestureRecognizer!
+    if tvOSRightSwipeGestureRecognizer == nil {
+    tvOSRightSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(_handleRightSwipeGesture))
+    tvOSRightSwipeGestureRecognizer?.direction = .right
+    contentView?.addGestureRecognizer(tvOSRightSwipeGestureRecognizer!)
     }
-
-#endif
+    return tvOSRightSwipeGestureRecognizer!
+    }
+    
+    #endif
     private func _tapGestureRecognizer() -> UITapGestureRecognizer {
-//#if os(iOS)
-        if self.tapGestureRecognizer == nil {
-            self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self._handleTapGesture(_:)))
-            self.tapGestureRecognizer?.cancelsTouchesInView = false
-            self.tapGestureRecognizer?.delegate = self
-            self.contentView?.addGestureRecognizer(self.tapGestureRecognizer!)
+        //#if os(iOS)
+        if tapGestureRecognizer == nil {
+            tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(_handleTapGesture(_:)))
+            tapGestureRecognizer?.cancelsTouchesInView = false
+            tapGestureRecognizer?.delegate = self
+            contentView?.addGestureRecognizer(tapGestureRecognizer!)
         }
-//#endif
-        return self.tapGestureRecognizer!
+        //#endif
+        return tapGestureRecognizer!
     }
-
+    
     private func _panGestureRecognizer() -> UIPanGestureRecognizer {
-//#if os(iOS)
-        if self.panGestureRecognizer == nil {
-            self.panGestureRecognizer = PBRevealViewControllerPanGestureRecognizer(target: self, action: #selector(self._handlePanGesture(_:)))
-            self.panGestureRecognizer?.delegate = self
-            self.contentView?.addGestureRecognizer(self.panGestureRecognizer!)
-            self.leftViewController?.willMove(toParentViewController: nil)
-            self.leftViewController?.removeFromParentViewController()
-            self.rightViewController?.willMove(toParentViewController: nil)
-            self.rightViewController?.removeFromParentViewController()
+        //#if os(iOS)
+        if panGestureRecognizer == nil {
+            panGestureRecognizer = PBRevealViewControllerPanGestureRecognizer(target: self, action: #selector(_handlePanGesture(_:)))
+            panGestureRecognizer?.delegate = self
+            contentView?.addGestureRecognizer(panGestureRecognizer!)
+            leftViewController?.willMove(toParentViewController: nil)
+            leftViewController?.removeFromParentViewController()
+            rightViewController?.willMove(toParentViewController: nil)
+            rightViewController?.removeFromParentViewController()
         }
-//#endif
-        return self.panGestureRecognizer!
+        //#endif
+        return panGestureRecognizer!
     }
-
+    
     // MARK: - Gesture Delegate
     
     public func gestureRecognizerShouldBegin(_ recognizer: UIGestureRecognizer) -> Bool {
-        if recognizer == self.tapGestureRecognizer {
+        if recognizer == tapGestureRecognizer {
             if delegate?.revealControllerTapGestureShouldBegin?(self) == false {
                 return false
             }
         }
-        if recognizer == self.panGestureRecognizer {
-            let velocity: CGFloat = (self.panGestureRecognizer?.velocity(in: self.contentView).x)!
+        if recognizer == panGestureRecognizer {
+            let velocity: CGFloat = (panGestureRecognizer?.velocity(in: contentView).x)!
             if (delegate?.revealControllerPanGestureShouldBegin?(self, direction: velocity > 0.0 ? .right : .left)) == false {
                 return false
             }
@@ -1976,314 +1898,299 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
              */
             let point: CGPoint = recognizer.location(in: recognizer.view)
             
-            if self.panFromLeftBorderWidth > 0.0 && !isLeftViewOpen && velocity > 0.0 && point.x > self.panFromLeftBorderWidth {
+            if panFromLeftBorderWidth > 0.0 && !isLeftViewOpen && velocity > 0.0 && point.x > panFromLeftBorderWidth {
                 return false
             }
-            if self.panFromRightBorderWidth > 0.0 && !isRightViewOpen && velocity < 0.0 && point.x < ((recognizer.view?.bounds.size.width)! - self.panFromRightBorderWidth) {
+            if panFromRightBorderWidth > 0.0 && !isRightViewOpen && velocity < 0.0 && point.x < ((recognizer.view?.bounds.size.width)! - panFromRightBorderWidth) {
                 return false
             }
         }
         return true
     }
-
+    
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if gestureRecognizer == self.panGestureRecognizer {
-            let velocity: CGFloat = (self.panGestureRecognizer?.velocity(in: self.contentView).x)!
+        if gestureRecognizer == panGestureRecognizer {
+            let velocity: CGFloat = (panGestureRecognizer?.velocity(in: contentView).x)!
             if delegate?.revealController?(self, panGestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer: otherGestureRecognizer, direction: velocity > 0.0 ? .right : .left) == true {
                 return true
             }
         }
-        if gestureRecognizer == self.tapGestureRecognizer {
+        if gestureRecognizer == tapGestureRecognizer {
             if delegate?.revealController?(self, tapGestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer: otherGestureRecognizer) == true {
                 return true
             }
         }
         return false
     }
-
+    
     private func _moveLeftView(toPosition position: CGFloat) {
-        if (self.leftViewController != nil) {
-            if !self.childViewControllers.contains(self.leftViewController!) {
-                var frame: CGRect = self.leftViewController!.view.frame
-                if self.isLeftPresentViewOnTop {
-                    frame.origin.x = -(self.leftViewRevealWidth)
-                    frame.size.width = self.leftViewRevealWidth
-                }
-                else {
-                    frame.origin.x = -(self.leftViewRevealDisplacement)
-                    frame.size.width = self.leftViewRevealWidth
-                }
-                self.leftViewController?.view.frame = frame
-                if self.isLeftPresentViewOnTop {
-                    self.contentView?.addSubview((self.leftViewController?.view)!)
-                }
-                else {
-                    self.contentView?.insertSubview((self.leftViewController?.view)!, belowSubview: (self.mainViewController?.view)!)
-                }
-                addChildViewController(self.leftViewController!)
-                self.leftViewController?.didMove(toParentViewController: self)
+        guard let leftViewController = leftViewController else { return }
+        if !childViewControllers.contains(leftViewController) {
+            var frame = leftViewController.view.frame
+            if isLeftPresentViewOnTop {
+                frame.origin.x = -(leftViewRevealWidth)
+                frame.size.width = leftViewRevealWidth
+            } else {
+                frame.origin.x = -(leftViewRevealDisplacement)
+                frame.size.width = leftViewRevealWidth
             }
-            var leftFrame: CGRect = self.leftViewController!.view.frame
-            var mainFrame: CGRect = self.mainViewController!.view.frame
-            if position <= 0 {
-                hideLeftView(animated: true)
-                self.panGestureRecognizer?.state = .cancelled
+            leftViewController.view.frame = frame
+            if isLeftPresentViewOnTop {
+                contentView?.addSubview(leftViewController.view)
+            } else {
+                contentView?.insertSubview(leftViewController.view, belowSubview: (mainViewController?.view)!)
             }
-            else if position < self.leftViewRevealWidth {
-                if self.isLeftPresentViewOnTop {
-                    leftFrame.origin.x = -(self.leftViewRevealWidth) + position
-                }
-                else {
-                    leftFrame.origin.x = -(self.leftViewRevealDisplacement - (position * self.leftViewRevealDisplacement / self.leftViewRevealWidth))
-                    mainFrame.origin.x = position
-                    self.mainViewController?.view.frame = mainFrame
-                }
-                self.leftViewController?.view.frame = leftFrame
+            addChildViewController(leftViewController)
+            leftViewController.didMove(toParentViewController: self)
+        }
+        
+        var leftFrame = leftViewController.view.frame
+        var mainFrame = mainViewController!.view.frame
+        if position <= 0 {
+            hideLeftView(animated: true)
+            panGestureRecognizer?.state = .cancelled
+        } else if position < leftViewRevealWidth {
+            if isLeftPresentViewOnTop {
+                leftFrame.origin.x = -(leftViewRevealWidth) + position
             }
             else {
-                delegate?.revealController?(self, willShowLeft: self.leftViewController!)
-                self.isLeftViewOpen = true
-                #if os(iOS)
-                    self.tapGestureRecognizer?.cancelsTouchesInView = true
-                #endif
-                leftFrame.origin.x = 0.0
-                leftFrame.size.width = self.leftViewRevealWidth
-                if !self.isLeftPresentViewOnTop {
-                    mainFrame.origin.x = self.leftViewRevealWidth
-                }
-                let completion: (() -> Void) = {() -> Void in
-                    self.delegate?.revealController?(self, didShowLeft: self.leftViewController!)
-                }
-                if (floor(NSFoundationVersionNumber) >= 7.0) {
-                    self.leftViewController?.view.layoutIfNeeded()
-                    UIView.animate(withDuration: leftToggleAnimationDuration, delay: 0.0, usingSpringWithDamping: leftToggleSpringDampingRatio, initialSpringVelocity: leftToggleSpringVelocity, options: .layoutSubviews, animations: {() -> Void in
-                        self.leftViewController?.view.layoutIfNeeded()
-                        self.leftViewController?.view.frame = leftFrame
-                        self.mainViewController?.view.frame = mainFrame
-                    }, completion: {(_ finished: Bool) -> Void in
-                        completion()
-                    })
-                }
-                else {
-                    self.leftViewController?.view.layoutIfNeeded()
-                    UIView.animate(withDuration: leftToggleAnimationDuration, delay: 0.0, options: .layoutSubviews, animations: {() -> Void in
-                        self.leftViewController?.view.layoutIfNeeded()
-                        self.leftViewController?.view.frame = leftFrame
-                        self.mainViewController?.view.frame = mainFrame
-                    }, completion: {(_ finished: Bool) -> Void in
-                        completion()
-                    })
-                }
+                leftFrame.origin.x = -(leftViewRevealDisplacement - (position * leftViewRevealDisplacement / leftViewRevealWidth))
+                mainFrame.origin.x = position
+                mainViewController?.view.frame = mainFrame
+            }
+            leftViewController.view.frame = leftFrame
+        } else {
+            delegate?.revealController?(self, willShowLeft: leftViewController)
+            isLeftViewOpen = true
+            #if os(iOS)
+                tapGestureRecognizer?.cancelsTouchesInView = true
+            #endif
+            leftFrame.origin.x = 0.0
+            leftFrame.size.width = leftViewRevealWidth
+            if !isLeftPresentViewOnTop {
+                mainFrame.origin.x = leftViewRevealWidth
+            }
+            let completion: (() -> Void) = { () -> Void in
+                self.delegate?.revealController?(self, didShowLeft: leftViewController)
+            }
+            if (floor(NSFoundationVersionNumber) >= 7.0) {
+                leftViewController.view.layoutIfNeeded()
+                UIView.animate(withDuration: leftToggleAnimationDuration, delay: 0.0, usingSpringWithDamping: leftToggleSpringDampingRatio, initialSpringVelocity: leftToggleSpringVelocity, options: .layoutSubviews, animations: { () -> Void in
+                    leftViewController.view.layoutIfNeeded()
+                    leftViewController.view.frame = leftFrame
+                    self.mainViewController?.view.frame = mainFrame
+                }, completion: { (_ finished: Bool) -> Void in
+                    completion()
+                })
+            }
+            else {
+                leftViewController.view.layoutIfNeeded()
+                UIView.animate(withDuration: leftToggleAnimationDuration, delay: 0.0, options: .layoutSubviews, animations: { () -> Void in
+                    leftViewController.view.layoutIfNeeded()
+                    leftViewController.view.frame = leftFrame
+                    self.mainViewController?.view.frame = mainFrame
+                }, completion: { (_ finished: Bool) -> Void in
+                    completion()
+                })
             }
         }
     }
-
+    
     private func _moveRightView(toPosition position: CGFloat) {
-        if (self.rightViewController != nil) {
-            if !self.childViewControllers.contains(self.rightViewController!) {
-                var frame: CGRect = self.rightViewController!.view.frame
-                if self.isRightPresentViewOnTop {
-                    frame.origin.x = view.bounds.size.width
-                    frame.size.width = self.rightViewRevealWidth
-                }
-                else {
-                    frame.origin.x = view.bounds.size.width - self.rightViewRevealWidth + self.rightViewRevealDisplacement
-                    frame.size.width = self.rightViewRevealWidth
-                }
-                self.rightViewController?.view.frame = frame
-                if self.isRightPresentViewOnTop {
-                    self.contentView?.addSubview((rightViewController?.view)!)
-                }
-                else {
-                    self.contentView?.insertSubview((rightViewController?.view)!, belowSubview: (mainViewController?.view)!)
-                }
-                addChildViewController(self.rightViewController!)
-                self.rightViewController?.didMove(toParentViewController: self)
+        guard let rightViewController = rightViewController else { return }
+        if !childViewControllers.contains(rightViewController) {
+            var frame: CGRect = rightViewController.view.frame
+            if isRightPresentViewOnTop {
+                frame.origin.x = view.bounds.size.width
+                frame.size.width = rightViewRevealWidth
+            } else {
+                frame.origin.x = view.bounds.size.width - rightViewRevealWidth + rightViewRevealDisplacement
+                frame.size.width = rightViewRevealWidth
             }
-            var rightFrame: CGRect = self.rightViewController!.view.frame
-            var mainFrame: CGRect = self.mainViewController!.view.frame
-            if position >= 0 {
-                hideRightView(animated: true)
-                self.panGestureRecognizer?.state = .cancelled
+            rightViewController.view.frame = frame
+            if isRightPresentViewOnTop {
+                contentView?.addSubview(rightViewController.view)
+            } else {
+                contentView?.insertSubview(rightViewController.view, belowSubview: (mainViewController?.view)!)
             }
-            else if abs(position) < self.rightViewRevealWidth {
-                if self.isRightPresentViewOnTop {
-                    rightFrame.origin.x = self.view.bounds.size.width - abs(position)
-                }
-                else {
-                    let displacement: CGFloat = self.rightViewRevealDisplacement - (abs(position) * self.rightViewRevealDisplacement / self.rightViewRevealWidth)
-                    rightFrame.origin.x = self.view.bounds.size.width - self.rightViewRevealWidth + displacement
-                    mainFrame.origin.x = position
+            addChildViewController(rightViewController)
+            rightViewController.didMove(toParentViewController: self)
+        }
+        
+        var rightFrame = rightViewController.view.frame
+        var mainFrame = mainViewController!.view.frame
+        if position >= 0 {
+            hideRightView(animated: true)
+            panGestureRecognizer?.state = .cancelled
+        } else if abs(position) < rightViewRevealWidth {
+            if isRightPresentViewOnTop {
+                rightFrame.origin.x = view.bounds.size.width - abs(position)
+            } else {
+                let displacement: CGFloat = rightViewRevealDisplacement - (abs(position) * rightViewRevealDisplacement / rightViewRevealWidth)
+                rightFrame.origin.x = view.bounds.size.width - rightViewRevealWidth + displacement
+                mainFrame.origin.x = position
+                mainViewController?.view.frame = mainFrame
+            }
+            rightViewController.view.frame = rightFrame
+        } else {
+            delegate?.revealController?(self, willShowRight: rightViewController)
+            isRightViewOpen = true
+            #if os(iOS)
+                tapGestureRecognizer?.cancelsTouchesInView = true
+            #endif
+            rightFrame.origin.x = view.bounds.size.width - rightViewRevealWidth
+            rightFrame.size.width = rightViewRevealWidth
+            if !isRightPresentViewOnTop {
+                mainFrame.origin.x = -(rightViewRevealWidth)
+            }
+            let completion: (() -> Void) = { () -> Void in
+                self.delegate?.revealController?(self, didShowRight: rightViewController)
+            }
+            if (floor(NSFoundationVersionNumber) >= 7.0) {
+                rightViewController.view.layoutIfNeeded()
+                UIView.animate(withDuration: rightToggleAnimationDuration, delay: 0.0, usingSpringWithDamping: rightToggleSpringDampingRatio, initialSpringVelocity: rightToggleSpringVelocity, options: .layoutSubviews, animations: { () -> Void in
+                    rightViewController.view.layoutIfNeeded()
+                    rightViewController.view.frame = rightFrame
                     self.mainViewController?.view.frame = mainFrame
-                }
-                self.rightViewController?.view.frame = rightFrame
+                }, completion: { (_ finished: Bool) -> Void in
+                    completion()
+                })
             }
             else {
-                delegate?.revealController?(self, willShowRight: self.rightViewController!)
-                self.isRightViewOpen = true
-                #if os(iOS)
-                    self.tapGestureRecognizer?.cancelsTouchesInView = true
-                #endif
-                rightFrame.origin.x = view.bounds.size.width - self.rightViewRevealWidth
-                rightFrame.size.width = self.rightViewRevealWidth
-                if !self.isRightPresentViewOnTop {
-                    mainFrame.origin.x = -(self.rightViewRevealWidth)
-                }
-                let completion: (() -> Void) = {() -> Void in
-                    self.delegate?.revealController?(self, didShowRight: self.rightViewController!)
-                }
-                if (floor(NSFoundationVersionNumber) >= 7.0) {
-                    self.rightViewController?.view.layoutIfNeeded()
-                    UIView.animate(withDuration: self.rightToggleAnimationDuration, delay: 0.0, usingSpringWithDamping: self.rightToggleSpringDampingRatio, initialSpringVelocity: self.rightToggleSpringVelocity, options: .layoutSubviews, animations: {() -> Void in
-                        self.rightViewController?.view.layoutIfNeeded()
-                        self.rightViewController?.view.frame = rightFrame
-                        self.mainViewController?.view.frame = mainFrame
-                    }, completion: {(_ finished: Bool) -> Void in
-                        completion()
-                    })
-                }
-                else {
-                    self.rightViewController?.view.layoutIfNeeded()
-                    UIView.animate(withDuration: self.rightToggleAnimationDuration, delay: 0.0, options: .layoutSubviews, animations: {() -> Void in
-                        self.rightViewController?.view.layoutIfNeeded()
-                        self.rightViewController?.view.frame = rightFrame
-                        self.mainViewController?.view.frame = mainFrame
-                    }, completion: {(_ finished: Bool) -> Void in
-                        completion()
-                    })
-                }
+                rightViewController.view.layoutIfNeeded()
+                UIView.animate(withDuration: rightToggleAnimationDuration, delay: 0.0, options: .layoutSubviews, animations: { () -> Void in
+                    rightViewController.view.layoutIfNeeded()
+                    rightViewController.view.frame = rightFrame
+                    self.mainViewController?.view.frame = mainFrame
+                }, completion: { (_ finished: Bool) -> Void in
+                    completion()
+                })
             }
         }
     }
-
+    
     // MARK: - UserInteractionEnabling
     
     private func disableUserInteraction() {
-        self.contentView?.isUserInteractionEnabled = false
+        contentView?.isUserInteractionEnabled = false
     }
     
     private func restoreUserInteraction() {
         // we use the stored userInteraction state just in case a developer decided to have our view interaction disabled before handle
-        self.contentView?.isUserInteractionEnabled = isUserInteractionStore
+        contentView?.isUserInteractionEnabled = isUserInteractionStore
     }
-
-// MARK: - Presse button Handle (tvOS)
     
-#if os(tvOS)
+    // MARK: - Presse button Handle (tvOS)
+    
+    #if os(tvOS)
     override open func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        for item: UIPress in presses {
-            if item.type == .menu {
-                if !isPressTypeMenuAllowed {
-                    super.pressesBegan(presses, with: event)
-                    return
-                }
-                if isLeftViewOpen {
-                    super.pressesBegan(presses, with: event)
-                }
-            }
-            else if item.type == .playPause {
-                if !isPressTypePlayPauseAllowed {
-                    super.pressesBegan(presses, with: event)
-                    return
-                }
-            }
-            else {
-                super.pressesBegan(presses, with: event)
-            }
-        }
+    for item: UIPress in presses {
+    if item.type == .menu {
+    if !isPressTypeMenuAllowed {
+    super.pressesBegan(presses, with: event)
+    return
     }
-
+    if isLeftViewOpen {
+    super.pressesBegan(presses, with: event)
+    }
+    } else if item.type == .playPause {
+    if !isPressTypePlayPauseAllowed {
+    super.pressesBegan(presses, with: event)
+    return
+    }
+    } else {
+    super.pressesBegan(presses, with: event)
+    }
+    }
+    }
+    
     override open func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        for item: UIPress in presses {
-            if item.type == .menu {
-                if !isPressTypeMenuAllowed {
-                    super.pressesEnded(presses, with: event)
-                    return
-                }
-                if isLeftViewOpen {
-                    super.pressesEnded(presses, with: event)
-                }
-                else {
-                    revealLeftView()
-                }
-            }
-            else if item.type == .playPause {
-                if !isPressTypePlayPauseAllowed {
-                    super.pressesEnded(presses, with: event)
-                    return
-                }
-                if isLeftViewOpen {
-                    hideLeftView(animated: true)
-                }
-                else {
-                    revealRightView()
-                }
-            }
-            else {
-                super.pressesEnded(presses, with: event)
-            }
-        }
+    for item: UIPress in presses {
+    if item.type == .menu {
+    if !isPressTypeMenuAllowed {
+    super.pressesEnded(presses, with: event)
+    return
     }
-
-#endif
+    if isLeftViewOpen {
+    super.pressesEnded(presses, with: event)
+    } else {
+    revealLeftView()
+    }
+    } else if item.type == .playPause {
+    if !isPressTypePlayPauseAllowed {
+    super.pressesEnded(presses, with: event)
+    return
+    }
+    if isLeftViewOpen {
+    hideLeftView(animated: true)
+    } else {
+    revealRightView()
+    }
+    } else {
+    super.pressesEnded(presses, with: event)
+    }
+    }
+    }
     
-// MARK: - Focus environment protocol (tvOS)
+    #endif
     
-#if os(tvOS)
+    // MARK: - Focus environment protocol (tvOS)
+    
+    #if os(tvOS)
     
     override open var preferredFocusEnvironments: [UIFocusEnvironment] {
-        if self.isLeftViewOpen {
-            if tvOSLeftPreferredFocusedView != nil {
-                return [tvOSLeftPreferredFocusedView!]
-            }
-            return [leftViewController!.view]
-        }
-        if self.isRightViewOpen {
-            if tvOSRightPreferredFocusedView != nil {
-                return [tvOSRightPreferredFocusedView!]
-            }
-            return [rightViewController!.view]
-        }
-        if tvOSMainPreferredFocusedView != nil {
-            return [tvOSMainPreferredFocusedView!]
-        }
-        return [];
+    if isLeftViewOpen {
+    if tvOSLeftPreferredFocusedView != nil {
+    return [tvOSLeftPreferredFocusedView!]
     }
-
+    return [leftViewController!.view]
+    }
+    if isRightViewOpen {
+    if tvOSRightPreferredFocusedView != nil {
+    return [tvOSRightPreferredFocusedView!]
+    }
+    return [rightViewController!.view]
+    }
+    if tvOSMainPreferredFocusedView != nil {
+    return [tvOSMainPreferredFocusedView!]
+    }
+    return []
+    }
+    
     override open func shouldUpdateFocus(in context: UIFocusUpdateContext) -> Bool {
-        return super.shouldUpdateFocus(in: context)
+    return super.shouldUpdateFocus(in: context)
     }
-
+    
     override open func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        if (tvOSLeftRevealButton != nil && context.nextFocusedView == tvOSLeftRevealButton) {
-            tvOSMainPreferredFocusedView = context.previouslyFocusedView
-            revealLeftView()
-        }
-        if (tvOSRightRevealButton != nil && context.nextFocusedView == tvOSRightRevealButton) {
-            tvOSMainPreferredFocusedView = context.previouslyFocusedView
-            revealRightView()
-        }
-        super.didUpdateFocus(in: context, with: coordinator)
+    if (tvOSLeftRevealButton != nil && context.nextFocusedView == tvOSLeftRevealButton) {
+    tvOSMainPreferredFocusedView = context.previouslyFocusedView
+    revealLeftView()
     }
-
-#endif
+    if (tvOSRightRevealButton != nil && context.nextFocusedView == tvOSRightRevealButton) {
+    tvOSMainPreferredFocusedView = context.previouslyFocusedView
+    revealRightView()
+    }
+    super.didUpdateFocus(in: context, with: coordinator)
+    }
     
-// MARK: - Gesture Handle
+    #endif
     
-#if os(tvOS)
+    // MARK: - Gesture Handle
+    
+    #if os(tvOS)
     @objc private func _handleLeftSwipeGesture(_ recognizer: UISwipeGestureRecognizer) {
-        if isRightViewOpen {
-            hideRightView(animated: true)
-        }
+    if isRightViewOpen {
+    hideRightView(animated: true)
     }
-
+    }
+    
     @objc private func _handleRightSwipeGesture(_ recognizer: UISwipeGestureRecognizer) {
-        if isLeftViewOpen {
-            hideLeftView(animated: true)
-        }
+    if isLeftViewOpen {
+    hideLeftView(animated: true)
     }
-
-#endif
+    }
+    
+    #endif
     
     @objc private func _handleTapGesture(_ recognizer: UITapGestureRecognizer) {
         if isLeftViewOpen {
@@ -2293,60 +2200,59 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
             hideRightView(animated: true)
         }
     }
-
+    
     @objc private func _handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
-        let position: CGFloat = recognizer.translation(in: self.contentView).x
-        let velocity: CGFloat = recognizer.velocity(in: self.contentView).x
+        let position: CGFloat = recognizer.translation(in: contentView).x
+        let velocity: CGFloat = recognizer.velocity(in: contentView).x
         switch recognizer.state {
         case .began:
             notifyPanGestureBegan(position)
-            if velocity > 0 && self.isLeftViewOpen {
-                self.panGestureRecognizer?.state = .cancelled
+            if velocity > 0 && isLeftViewOpen {
+                panGestureRecognizer?.state = .cancelled
                 return
             }
-            if velocity < 0 && self.isRightViewOpen {
-                self.panGestureRecognizer?.state = .cancelled
+            if velocity < 0 && isRightViewOpen {
+                panGestureRecognizer?.state = .cancelled
                 return
             }
             if velocity > 0 {
-                if self.isRightViewOpen {
-                    self.isRightViewDragging = true
+                if isRightViewOpen {
+                    isRightViewDragging = true
                 }
                 else {
-                    self.isLeftViewDragging = true
+                    isLeftViewDragging = true
                 }
             }
             else if velocity < 0 {
-                if self.isLeftViewOpen {
-                    self.isLeftViewDragging = true
+                if isLeftViewOpen {
+                    isLeftViewDragging = true
                 }
                 else {
-                    self.isRightViewDragging = true
+                    isRightViewDragging = true
                 }
             }
             
-            if self.isLeftViewDragging {
-                self.panBaseLocation = 0.0
-                if self.isLeftViewOpen {
-                    self.panBaseLocation = self.leftViewRevealWidth
+            if isLeftViewDragging {
+                panBaseLocation = 0.0
+                if isLeftViewOpen {
+                    panBaseLocation = leftViewRevealWidth
                 }
             }
-            if self.isRightViewDragging {
-                self.panBaseLocation = 0.0
-                if self.isRightViewOpen {
-                    self.panBaseLocation = -(self.rightViewRevealWidth)
+            if isRightViewDragging {
+                panBaseLocation = 0.0
+                if isRightViewOpen {
+                    panBaseLocation = -(rightViewRevealWidth)
                 }
             }
-            self.isLeftViewOpen = false
-            self.isRightViewOpen = false
+            isLeftViewOpen = false
+            isRightViewOpen = false
             disableUserInteraction()
-            if abs(velocity) > self.swipeVelocity {
-                if self.isLeftViewDragging {
-                    _moveLeftView(toPosition: self.panBaseLocation > 0.0 ? 0.0 : self.leftViewRevealWidth)
-                }
-                else {
-                    if self.isRightViewDragging {
-                        _moveRightView(toPosition: self.panBaseLocation < 0.0 ? self.view.bounds.size.width : -(self.rightViewRevealWidth))
+            if abs(velocity) > swipeVelocity {
+                if isLeftViewDragging {
+                    _moveLeftView(toPosition: panBaseLocation > 0.0 ? 0.0 : leftViewRevealWidth)
+                } else {
+                    if isRightViewDragging {
+                        _moveRightView(toPosition: panBaseLocation < 0.0 ? view.bounds.size.width : -(rightViewRevealWidth))
                     }
                 }
             }
@@ -2354,39 +2260,35 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
             
         case .changed:
             notifyPanGestureMoved(position)
-            if self.isLeftViewOpen || self.isRightViewOpen {
-                self.panGestureRecognizer?.state = .cancelled
+            if isLeftViewOpen || isRightViewOpen {
+                panGestureRecognizer?.state = .cancelled
                 break
             }
-            if self.isLeftViewDragging {
-                let xLocation: CGFloat = self.panBaseLocation + position
+            if isLeftViewDragging {
+                let xLocation: CGFloat = panBaseLocation + position
                 _moveLeftView(toPosition: xLocation)
-            }
-            else {
-                let xLocation: CGFloat = self.panBaseLocation + position
+            } else {
+                let xLocation: CGFloat = panBaseLocation + position
                 _moveRightView(toPosition: xLocation)
             }
             break
             
         case .ended:
-            if self.isLeftViewOpen || self.isRightViewOpen {
+            if isLeftViewOpen || isRightViewOpen {
                 notifyPanGestureEnded(position)
                 break
             }
-            let xLocation: CGFloat = self.panBaseLocation + position
-            if self.isLeftViewDragging {
-                if xLocation > (self.leftViewRevealWidth * 0.50) {
-                    _moveLeftView(toPosition: self.leftViewRevealWidth)
-                }
-                else {
+            let xLocation: CGFloat = panBaseLocation + position
+            if isLeftViewDragging {
+                if xLocation > (leftViewRevealWidth * 0.50) {
+                    _moveLeftView(toPosition: leftViewRevealWidth)
+                } else {
                     hideLeftView(animated: true)
                 }
-            }
-            else {
-                if abs(xLocation) > (self.rightViewRevealWidth * 0.50) {
-                    _moveRightView(toPosition: -(self.rightViewRevealWidth))
-                }
-                else {
+            } else {
+                if abs(xLocation) > (rightViewRevealWidth * 0.50) {
+                    _moveRightView(toPosition: -(rightViewRevealWidth))
+                } else {
                     hideRightView(animated: true)
                 }
             }
@@ -2402,27 +2304,30 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
         }
         
     }
-
+    
     // MARK: - Gesture Handle Delegate call methods
     
     private func notifyPanGestureBegan(_ position: CGFloat) {
-        let velocity: CGFloat = (self.panGestureRecognizer?.velocity(in: self.contentView).x)!
-        delegate?.revealControllerPanGestureBegan?(self, direction: velocity > 0.0 ? .right : .left)
+        if let velocity = panGestureRecognizer?.velocity(in: contentView).x {
+            delegate?.revealControllerPanGestureBegan?(self, direction: velocity > 0.0 ? .right : .left)
+        }
     }
-
+    
     private func notifyPanGestureMoved(_ position: CGFloat) {
-        let velocity: CGFloat = (self.panGestureRecognizer?.velocity(in: self.contentView).x)!
-        delegate?.revealControllerPanGestureMoved?(self, direction: velocity > 0.0 ? .right : .left)
+        if let velocity = panGestureRecognizer?.velocity(in: contentView).x {
+            delegate?.revealControllerPanGestureMoved?(self, direction: velocity > 0.0 ? .right : .left)
+        }
     }
-
+    
     private func notifyPanGestureEnded(_ position: CGFloat) {
-        self.isLeftViewDragging = false
-        self.isRightViewDragging = false
+        isLeftViewDragging = false
+        isRightViewDragging = false
         restoreUserInteraction()
-        let velocity: CGFloat = (panGestureRecognizer?.velocity(in: self.contentView).x)!
-        delegate?.revealControllerPanGestureEnded?(self, direction: velocity > 0.0 ? .right : .left)
+        if let velocity = panGestureRecognizer?.velocity(in: contentView).x {
+            delegate?.revealControllerPanGestureEnded?(self, direction: velocity > 0.0 ? .right : .left)
+        }
     }
-
+    
     // MARK: - Adjusts frames
     
     private func adjustsFrameForController(_ sideViewController: UIViewController) -> CGRect {
@@ -2431,43 +2336,40 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
         if (floor(NSFoundationVersionNumber) < 7.0) {
             frame.origin.y = barHeight
             frame.size.height = view.bounds.size.height - barHeight
-        }
-        else {
-#if os(iOS)
-            let statusBarIsHidden: Bool = UIApplication.shared.statusBarFrame.size.height == 0.0
-#else
-            let statusBarIsHidden: Bool = true
-#endif
+        } else {
+            #if os(iOS)
+                let statusBarIsHidden: Bool = UIApplication.shared.statusBarFrame.size.height == 0.0
+            #else
+                let statusBarIsHidden: Bool = true
+            #endif
             frame.origin.y = barHeight + (statusBarIsHidden ? 0 : 20)
             frame.size.height = view.frame.size.height - barHeight - (statusBarIsHidden ? 0 : 20)
         }
         return frame
     }
-
+    
     // MARK: - Override rotation
     
     private func viewWillTransitionToSize(_ size: CGSize) {
         
         var frame: CGRect
         
-        if self.leftViewController != nil {
-            if self.isLeftPresentViewHierarchically {
-                frame = adjustsFrameForController(self.leftViewController!)
-            }
-            else {
-                frame = (self.leftViewController?.view.frame)!
+        if let leftViewController = leftViewController {
+            if isLeftPresentViewHierarchically {
+                frame = adjustsFrameForController(leftViewController)
+            } else {
+                frame = leftViewController.view.frame
                 frame.size.height = size.height
             }
             frame.size.width = leftViewRevealWidth
-            self.leftViewController?.view.frame = frame
+            leftViewController.view.frame = frame
         }
         
-        if self.rightViewController != nil {
-            if self.isRightPresentViewHierarchically {
-                frame = adjustsFrameForController(self.rightViewController!)
-            }
-            else {
-                frame = (self.rightViewController?.view.frame)!
+        if let rightViewController = rightViewController {
+            if isRightPresentViewHierarchically {
+                frame = adjustsFrameForController(rightViewController)
+            } else {
+                frame = rightViewController.view.frame
                 frame.size.height = size.height
             }
             frame.origin.x = size.width
@@ -2475,48 +2377,45 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
                 frame.origin.x = size.width - rightViewRevealWidth
             }
             frame.size.width = rightViewRevealWidth
-            self.rightViewController?.view.frame = frame
+            rightViewController.view.frame = frame
         }
     }
-
+    
     // MARK: - Override rotation
-
+    
     override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animate(alongsideTransition: {(_ context: UIViewControllerTransitionCoordinatorContext) -> Void in
+        coordinator.animate(alongsideTransition: { (_ context: UIViewControllerTransitionCoordinatorContext) -> Void in
             self.viewWillTransitionToSize(size)
-        }, completion: {(_ context: UIViewControllerTransitionCoordinatorContext) -> Void in
+        }, completion: { (_ context: UIViewControllerTransitionCoordinatorContext) -> Void in
         })
         super.viewWillTransition(to: size, with: coordinator)
     }
-
+    
     // iOS < 8.0
     /*
-    override func shouldAutorotate() -> Bool {
-        return true
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .allButUpsideDown
-    }
-
-    override func willAnimateRotation(toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
-        viewWillTransition(to: view.bounds.size)
-    }
-    */
+     override func shouldAutorotate() -> Bool {
+     return true
+     }
+     
+     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+     return .allButUpsideDown
+     }
+     
+     override func willAnimateRotation(toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+     viewWillTransition(to: view.bounds.size)
+     }
+     */
     //
-
+    
     // MARK: - Helpers
     
     private func tableViewInView(_ view: UIView) -> UITableView? {
-        if (view is UITableView) {
-            return (view as? UITableView)!
+        if let tableView = view as? UITableView {
+            return tableView
         }
         for subview: UIView in view.subviews {
-            if (subview is UITableView) {
-                return (subview as? UITableView)!
-            }
-            if subview.subviews.count > 0 {
-                _ = tableViewInView(subview)
+            if let tableView = subview as? UITableView {
+                return tableView
             }
         }
         return nil
@@ -2528,27 +2427,28 @@ open class PBRevealViewController: UIViewController, UIGestureRecognizerDelegate
 private class PBRevealViewControllerPanGestureRecognizer: UIPanGestureRecognizer {
     private var dragging: Bool = false
     private var beginPoint = CGPoint.zero
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesBegan(touches, with: event)
-        let touch: UITouch? = touches.first
-        self.beginPoint = (touch?.location(in: view))!
-        self.dragging = false
+        if let touch = touches.first {
+            beginPoint = touch.location(in: view)
+        }
+        dragging = false
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
-    super.touchesMoved(touches, with: event)
-        if self.dragging || state == .failed {
+        super.touchesMoved(touches, with: event)
+        if dragging || state == .failed {
             return
         }
         let kDirectionPanThreshold: CGFloat = 5
-        let touch: UITouch? = touches.first
-        let nowPoint: CGPoint? = touch?.location(in: view)
-        if abs((nowPoint?.x)! - beginPoint.x) > kDirectionPanThreshold {
-            self.dragging = true
-        }
-        else if abs((nowPoint?.y)! - beginPoint.y) > kDirectionPanThreshold {
-            self.state = .failed
+        if let touch = touches.first {
+            let nowPoint = touch.location(in: view)
+            if abs(nowPoint.x - beginPoint.x) > kDirectionPanThreshold {
+                dragging = true
+            } else if abs(nowPoint.y - beginPoint.y) > kDirectionPanThreshold {
+                state = .failed
+            }
         }
     }
 }
@@ -2556,69 +2456,67 @@ private class PBRevealViewControllerPanGestureRecognizer: UIPanGestureRecognizer
 // MARK: - PBContextTransitioningObject
 
 private class PBContextTransitionObject: NSObject, UIViewControllerContextTransitioning {
-
+    
     internal var containerView: UIView
     internal var presentationStyle: UIModalPresentationStyle = .none
     internal var transitionWasCancelled: Bool = false
     internal var targetTransform: CGAffineTransform = .identity
     internal var isAnimated: Bool = true
     internal var isInteractive: Bool = false
-
+    
     weak internal var revealController: PBRevealViewController?
     internal var toViewController: UIViewController?
     internal var fromViewController: UIViewController?
-    internal var completion: ((_: Void) -> Void)? = nil
-
-    init(revealController: PBRevealViewController, containerView: UIView, fromViewController: UIViewController, toViewController: UIViewController, completion: @escaping (_: Void) -> Void) {
+    internal var completion: (() -> Void)? = nil
+    
+    init(revealController: PBRevealViewController, containerView: UIView, fromViewController: UIViewController?, toViewController: UIViewController?, completion: @escaping () -> Void) {
         
         self.revealController = revealController
         self.containerView = containerView
         self.fromViewController = fromViewController
         self.toViewController = toViewController
         self.completion = completion
-    
+        
     }
     
     func updateInteractiveTransition(_ percentComplete: CGFloat) {
         // not supported
     }
-
+    
     func pauseInteractiveTransition() {
         // not supported
     }
-
+    
     func finishInteractiveTransition() {
         // not supported
     }
-
+    
     func cancelInteractiveTransition() {
         // not supported
     }
-
+    
     func completeTransition(_ didComplete: Bool) {
-        completion!()
+        completion?()
     }
-
+    
     func viewController(forKey key: UITransitionContextViewControllerKey) -> UIViewController? {
         if (key == .from) {
-            return fromViewController!
-        }
-        else if (key == .to) {
-            return toViewController!
-        }
-        else {
+            return fromViewController
+        } else if (key == .to) {
+            return toViewController
+        } else {
             return nil
         }
     }
     
     func view(forKey key: UITransitionContextViewKey) -> UIView? {
-        return nil;
+        return nil
     }
-
+    
     func initialFrame(for vc: UIViewController) -> CGRect {
         return vc.view.frame
     }
-
+    
     func finalFrame(for vc: UIViewController) -> CGRect {
         return vc.view.frame
     }
@@ -2627,8 +2525,8 @@ private class PBContextTransitionObject: NSObject, UIViewControllerContextTransi
 // MARK: - PBRevealView Class
 
 private class PBRevealView: UIView {
-     weak var revealController: PBRevealViewController?
-
+    weak var revealController: PBRevealViewController?
+    
     init(frame: CGRect, controller revealController: PBRevealViewController) {
         super.init(frame: frame)
         
@@ -2638,16 +2536,18 @@ private class PBRevealView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let isInside: Bool = super.point(inside: point, with: event)
         if isInside {
-            revealController?.tapGestureRecognizer?.isEnabled = true
-            if (revealController?.isLeftViewOpen)! && point.x < (revealController?.leftViewRevealWidth)! {
-                revealController?.tapGestureRecognizer?.isEnabled = false
-            }
-            if (revealController?.isRightViewOpen)! && point.x > (bounds.size.width - (revealController?.rightViewRevealWidth)!) {
-                revealController?.tapGestureRecognizer?.isEnabled = false
+            if let revealController = revealController {
+                revealController.tapGestureRecognizer?.isEnabled = true
+                if revealController.isLeftViewOpen && point.x < revealController.leftViewRevealWidth {
+                    revealController.tapGestureRecognizer?.isEnabled = false
+                }
+                if revealController.isRightViewOpen && point.x > (bounds.size.width - revealController.rightViewRevealWidth) {
+                    revealController.tapGestureRecognizer?.isEnabled = false
+                }
             }
             return true
         }
@@ -2661,9 +2561,8 @@ private extension UIViewController {
     
     // An extension of UIViewController to check if a segue exist (TODO: Apple rejected?).
     func canPerformSegue(id: String) -> Bool {
-        let segues = self.value(forKey: "storyboardSegueTemplates") as? [NSObject]
-        guard let filtered = segues?.filter({ $0.value(forKey: "identifier") as? String == id })
-        else {
+        let segues = value(forKey: "storyboardSegueTemplates") as? [NSObject]
+        guard let filtered = segues?.filter({ $0.value(forKey: "identifier") as? String == id }) else {
             return false
         }
         return (filtered.count > 0)
@@ -2672,7 +2571,7 @@ private extension UIViewController {
     // An extension of UIViewController to perform a segue if exist (TODO: Apple rejected?).
     func performSegue(id: String, sender: AnyObject?) {
         if canPerformSegue(id: id) {
-            self.performSegue(withIdentifier: id, sender: sender)
+            performSegue(withIdentifier: id, sender: sender)
         }
     }
 }
@@ -2680,11 +2579,11 @@ private extension UIViewController {
 public extension UIViewController {
     
     // An extension of UIViewController to let childViewControllers easily access their parent PBRevealViewController.
-    func revealViewController() -> PBRevealViewController? {
+    var revealViewController: PBRevealViewController? {
         var viewController: UIViewController? = self
         
-        if viewController != nil && viewController is PBRevealViewController {
-            return viewController! as? PBRevealViewController
+        if let vc = viewController, vc is PBRevealViewController {
+            return vc as? PBRevealViewController
         }
         while (!(viewController is PBRevealViewController) && viewController?.parent != nil) {
             viewController = viewController?.parent

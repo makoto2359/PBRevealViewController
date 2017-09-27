@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PBRevealViewController
 
 class MenuTableViewController: UITableViewController {
     
@@ -43,7 +42,7 @@ class MenuTableViewController: UITableViewController {
         cell.textLabel?.text = items[indexPath.row]
         
         cell.backgroundColor = UIColor.white
-        if revealViewController()?.leftViewBlurEffectStyle != .none {
+        if revealViewController?.leftViewBlurEffectStyle != .none {
             cell.backgroundColor = UIColor.clear
         }
         
@@ -58,23 +57,23 @@ class MenuTableViewController: UITableViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var controller: UIViewController?
         
-        revealViewController()?.toggleAnimationType = animations[indexPath.row]
+        revealViewController?.toggleAnimationType = animations[indexPath.row]
         
         if controllers[indexPath.row] == "SettingsNavigationController" {
             if settingsNavigationController == nil {
                 settingsNavigationController = storyboard.instantiateViewController(withIdentifier: controllers[indexPath.row]) as? UINavigationController
             }
-            revealViewController()?.pushMainViewController(settingsNavigationController!, animated:true)
+            revealViewController?.pushMainViewController(settingsNavigationController!, animated:true)
         }
         else if controllers[indexPath.row] == "ReplaceMainViewController" {
             controller = storyboard.instantiateViewController(withIdentifier: controllers[indexPath.row])
             let nc = UINavigationController(rootViewController: controller!)
-            revealViewController()?.setMainViewController(nc, animated:true)
+            revealViewController?.setMainViewController(nc, animated:true)
         }
         else {
             controller = storyboard.instantiateViewController(withIdentifier: controllers[indexPath.row])
             let nc = UINavigationController(rootViewController: controller!)
-            revealViewController()?.pushMainViewController(nc, animated:true)
+            revealViewController?.pushMainViewController(nc, animated:true)
         }
     }
 }

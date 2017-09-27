@@ -23,36 +23,11 @@ A category method on UIViewController, `revealViewController`, to get the parent
 DESC
 
     s.homepage         = 'https://github.com/iDevelopper/PBRevealViewController'
-    # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { 'iDevelopper' => 'patrick.bodet4@wanadoo.fr' }
     s.source           = { :git => 'https://github.com/iDevelopper/PBRevealViewController.git', :tag => s.version.to_s }
-    # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-    s.ios.deployment_target = '6.0'
-    s.tvos.deployment_target = '9.0'
-
-    s.default_subspec = 'ObjC'
-
-    s.subspec 'ObjC' do |ss|
-        ss.ios.deployment_target = '6.0'
-        ss.tvos.deployment_target = '9.0'
-        ss.source_files = 'PBRevealViewController/Classes/**/*.{h,m}'
-    end
-
-    s.subspec 'Swift' do |ss|
-        ss.ios.deployment_target = '8.0'
-        ss.tvos.deployment_target = '9.0'
-        ss.source_files = 'PBRevealViewController/Classes/**/*.swift'
-    end
-
-    #s.source_files = 'PBRevealViewController/Classes/**/*'
-
-    # s.resource_bundles = {
-    #   'PBRevealViewController' => ['PBRevealViewController/Assets/*.png']
-    # }
-
-    # s.public_header_files = 'Pod/Classes/**/*.h'
-    # s.frameworks = 'UIKit', 'MapKit'
-    # s.dependency 'AFNetworking', '~> 2.3'
+    ss.ios.deployment_target = '8.0'
+    ss.tvos.deployment_target = '9.0'
+    ss.source_files = 'PBRevealViewController/Classes/**/*.swift'
 end
